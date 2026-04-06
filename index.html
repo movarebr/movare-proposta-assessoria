@@ -25,21 +25,28 @@
     min-height: 100vh;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; position: relative; padding: 60px 24px; overflow: hidden;
+    /* Degradê Dourado Escuro */
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, #2a2212 0%, var(--dark) 70%);
   }
-  .hero-bg {
-    position: absolute; inset: 0;
-    background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80');
-    background-size: cover; background-position: center;
-    filter: brightness(0.25) saturate(0.6);
+  
+  /* Textura sobre o Degradê */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* SVG na cor Dourada (--accent) */
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
     z-index: 0;
   }
+
   .hero > * { position: relative; z-index: 1; }
   .hero-badge {
     display: inline-block; border: 1px solid rgba(201,168,76,0.5);
     color: var(--accent-light); font-size: 11px; font-weight: 500;
     letter-spacing: 3px; text-transform: uppercase; padding: 8px 20px;
     border-radius: 100px; margin-bottom: 36px; background: rgba(201,168,76,0.08);
-    animation: fadeUp 0.8s ease both;
+    backdrop-filter: blur(5px); animation: fadeUp 0.8s ease both;
   }
   .hero-logo { margin-bottom: 24px; animation: fadeUp 0.8s 0.1s ease both; }
   .hero-logo svg { width: 52px; height: 52px; opacity: 0.9; }
@@ -140,8 +147,27 @@
   .passo-content p { font-size: 14px; color: rgba(244,240,232,0.75); line-height: 1.7; }
 
   /* CTA FINAL */
-  .cta-final { text-align: center; border-top: 1px solid rgba(201,168,76,0.15); padding: 120px 24px; position: relative; overflow: hidden; }
-  .cta-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1600&q=80'); background-size: cover; background-position: center; filter: brightness(0.15) saturate(0.4); z-index: 0; }
+  .cta-final { 
+    text-align: center; 
+    border-top: 1px solid rgba(201,168,76,0.15); 
+    padding: 120px 24px; 
+    position: relative; 
+    overflow: hidden; 
+    /* Degradê Dourado Escuro vindo de baixo */
+    background: radial-gradient(ellipse 80% 60% at 50% 100%, #2a2212 0%, var(--dark) 70%);
+  }
+  
+  /* Textura sobre o CTA */
+  .cta-final::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* SVG na cor Dourada (--accent) */
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
   .cta-final > * { position: relative; z-index: 1; }
   .cta-final h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px,6vw,72px); font-weight: 300; color: var(--cream); margin-bottom: 20px; line-height: 1.1; }
   .cta-final h2 em { font-style: italic; color: var(--accent-light); }
@@ -166,7 +192,6 @@
 <body>
 
 <section class="hero">
-  <div class="hero-bg"></div>
   <div class="hero-badge">Proposta Exclusiva · Assessoria Executiva B2B</div>
   <div class="hero-logo">
     <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -288,7 +313,6 @@
 </section>
 
 <section class="cta-final">
-  <div class="cta-bg"></div>
   <div class="container reveal">
     <h2>Vamos estruturar<br><em>o seu negócio?</em></h2>
     <p>Escolha seu pacote e comece a transformar a gestão da sua empresa ainda esta semana.</p>
