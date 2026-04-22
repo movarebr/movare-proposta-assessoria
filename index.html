@@ -25,16 +25,12 @@
     min-height: 100vh;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; position: relative; padding: 60px 24px; overflow: hidden;
-    /* Degradê Dourado Escuro */
     background: radial-gradient(ellipse 80% 60% at 50% 0%, #2a2212 0%, var(--dark) 70%);
   }
-  
-  /* Textura sobre o Degradê */
   .hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    /* SVG na cor Dourada (--accent) */
     background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 0;
@@ -126,11 +122,49 @@
   .price-currency { font-size: 14px; color: var(--muted); }
   .price-value { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: var(--cream); line-height: 1; }
   .price-period { font-size: 13px; color: var(--muted); }
+  
+  /* Estilo da Economia (igual à 1ª foto) */
+  .pacote-economia {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--accent-light);
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-top: 16px;
+  }
+
   .pacote-body { padding: 32px 36px; flex: 1; }
   .pacote-body h4 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
   .pacote-features { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
   .pacote-features li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: rgba(244,240,232,0.75); line-height: 1.5; }
   .pacote-features li::before { content: '◆'; color: var(--accent); font-size: 8px; margin-top: 5px; flex-shrink: 0; }
+
+  /* Bloco CLT Equivalente */
+  .pacote-clt {
+    background: rgba(0,0,0,0.3);
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+  }
+  .pacote-clt-label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .pacote-clt-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: rgba(244,240,232,0.4);
+    text-decoration: line-through;
+  }
+
   .pacote-footer { padding: 0 36px 36px; }
   .btn-proposta { display: block; text-align: center; background: transparent; border: 1px solid rgba(201,168,76,0.4); color: var(--accent-light); font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; padding: 16px; text-decoration: none; transition: all 0.3s; border-radius: 2px; }
   .btn-proposta:hover { background: var(--accent); border-color: var(--accent); color: var(--dark); }
@@ -153,16 +187,12 @@
     padding: 120px 24px; 
     position: relative; 
     overflow: hidden; 
-    /* Degradê Dourado Escuro vindo de baixo */
     background: radial-gradient(ellipse 80% 60% at 50% 100%, #2a2212 0%, var(--dark) 70%);
   }
-  
-  /* Textura sobre o CTA */
   .cta-final::before {
     content: '';
     position: absolute;
     inset: 0;
-    /* SVG na cor Dourada (--accent) */
     background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 0;
@@ -255,11 +285,16 @@
   <div class="container">
     <div class="reveal"><p class="section-label">Investimento</p><h2 class="section-title">Escolha o pacote <em>ideal para você</em></h2><p class="section-body">Todos os pacotes incluem 2 profissionais dedicados, equipe certificada LGPD, emissão de NF e economia real comparada à contratação CLT.</p></div>
     <div class="pacotes-grid reveal">
+      
+      <!-- PACOTE ESSENCIAL -->
       <div class="pacote-card">
         <div class="pacote-header">
           <p class="pacote-tier">🥉 Pacote</p>
           <h3 class="pacote-name">Essencial</h3>
           <div class="pacote-price"><span class="price-currency">R$</span><span class="price-value">1.200</span><span class="price-period">/mês</span></div>
+          <div class="pacote-economia">
+            💰 Economia de R$1.824,93/mês
+          </div>
         </div>
         <div class="pacote-body">
           <h4>O que está incluso</h4>
@@ -271,15 +306,24 @@
             <li>2 profissionais dedicados</li>
             <li>Emissão de Nota Fiscal</li>
           </ul>
+          <div class="pacote-clt">
+            <p class="pacote-clt-label">CLT equivalente custaria</p>
+            <p class="pacote-clt-value">R$ 3.024,93/mês</p>
+          </div>
         </div>
         <div class="pacote-footer"><a href="https://wa.me/5571983136600" class="btn-proposta">Quero este pacote</a></div>
       </div>
+      
+      <!-- PACOTE ESTRATÉGICO (DESTAQUE) -->
       <div class="pacote-card destaque">
         <div class="pacote-tag">Mais completo</div>
         <div class="pacote-header">
           <p class="pacote-tier">🥇 Pacote</p>
           <h3 class="pacote-name">Estratégico</h3>
           <div class="pacote-price"><span class="price-currency">R$</span><span class="price-value">2.200</span><span class="price-period">/mês</span></div>
+          <div class="pacote-economia">
+            💰 Economia de R$3.146,43/mês
+          </div>
         </div>
         <div class="pacote-body">
           <h4>Tudo do Essencial, mais:</h4>
@@ -291,6 +335,10 @@
             <li>Gestão de fornecedores</li>
             <li>Reunião estratégica mensal</li>
           </ul>
+          <div class="pacote-clt">
+            <p class="pacote-clt-label">CLT equivalente custaria</p>
+            <p class="pacote-clt-value">R$ 5.346,43/mês</p>
+          </div>
         </div>
         <div class="pacote-footer"><a href="https://wa.me/5571983136600" class="btn-proposta">Quero este pacote</a></div>
       </div>
