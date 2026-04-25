@@ -11,16 +11,20 @@
     --cream: #F4F0E8;
     --dark: #111418;
     --dark-mid: #1C2028;
-    --azul: #2E4057;
-    --azul-claro: #4A6FA5;
     --accent: #C9A84C;
     --accent-light: #E0C070;
     --muted: #7A8090;
   }
   html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--dark); color: var(--cream); overflow-x: hidden; }
 
-  /* HERO */
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--dark);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO (fundo escuro com gradiente) ── */
   .hero {
     min-height: 100vh;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -28,12 +32,9 @@
     background: radial-gradient(ellipse 80% 60% at 50% 0%, #2a2212 0%, var(--dark) 60%);
   }
   .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
+    content: ''; position: absolute; inset: 0;
     background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
+    pointer-events: none; z-index: 0;
   }
   .hero > * { position: relative; z-index: 1; }
   .hero-badge {
@@ -75,115 +76,136 @@
   .hero-scroll span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
   .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollAnim 2s ease infinite; }
 
-  /* SECTIONS */
+  /* ── SECTIONS ── */
   section { padding: 100px 24px; }
   .container { max-width: 1000px; margin: 0 auto; }
-  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
-  .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
-  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px,5vw,52px); font-weight: 300; line-height: 1.15; color: var(--cream); margin-bottom: 20px; }
-  .section-title em { font-style: italic; color: var(--accent-light); }
-  .section-body { font-size: 16px; line-height: 1.85; color: rgba(244,240,232,0.65); max-width: 620px; }
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .section-label::before { content: ''; display: block; width: 24px; height: 1px; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px,5vw,52px); font-weight: 300; line-height: 1.15; margin-bottom: 20px; }
+  .section-title em { font-style: italic; }
+  .section-body { font-size: 16px; line-height: 1.85; max-width: 620px; }
 
-  /* ESPELHO DA DOR — fundo #111418 */
-  .dor { background: #111418; }
+  /* ── TEMAS POR SEÇÃO ── */
+  /* Creme: fundo #F4F0E8, texto escuro */
+  .tema-creme { background: var(--cream); color: var(--dark); }
+  .tema-creme .section-label { color: #9A7D32; }
+  .tema-creme .section-label::before { background: #9A7D32; }
+  .tema-creme .section-title { color: var(--dark); }
+  .tema-creme .section-title em { color: #9A7D32; }
+  .tema-creme .section-body { color: rgba(17,20,24,0.65); }
+
+  /* Escuro: mantém o padrão */
+  .tema-escuro { background: var(--dark); color: var(--cream); }
+  .tema-escuro .section-label { color: var(--accent); }
+  .tema-escuro .section-label::before { background: var(--accent); }
+  .tema-escuro .section-title { color: var(--cream); }
+  .tema-escuro .section-title em { color: var(--accent-light); }
+  .tema-escuro .section-body { color: rgba(244,240,232,0.65); }
+
+  /* ── ESPELHO DA DOR (tema creme) ── */
   .dor-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 56px; }
-  .dor-card { background: var(--dark-mid); padding: 44px 48px; border-radius: 6px; transition: background 0.3s, box-shadow 0.3s; }
-  .dor-card:hover { background: #161c24; }
-  .dor-card-icon { font-size: 24px; margin-bottom: 12px; }
-  .dor-card p { font-size: 14px; color: rgba(244,240,232,0.7); line-height: 1.7; font-style: italic; }
+  .tema-creme .dor-card { background: #fff; padding: 44px 48px; border-radius: 6px; transition: background 0.3s, box-shadow 0.3s; border: 1px solid rgba(201,168,76,0.15); }
+  .tema-creme .dor-card:hover { background: #faf8f4; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+  .tema-creme .dor-card-icon { font-size: 32px; margin-bottom: 18px; }
+  .tema-creme .dor-card p { font-family: 'Cormorant Garamond', serif; font-size: clamp(16px,2.5vw,19px); color: rgba(17,20,24,0.7); line-height: 1.7; font-style: italic; }
 
-  /* SOBRE — fundo #111418 */
-  .sobre { background: #111418; }
+  /* ── SOBRE (tema creme) ── */
   .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 64px; }
-  .sobre-card { background: var(--dark-mid); padding: 44px 48px; border-radius: 6px; position: relative; overflow: hidden; transition: background 0.3s; }
-  .sobre-card:hover { background: #222832; }
-  .sobre-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, var(--accent), transparent); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
-  .sobre-card::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--accent), transparent); transform: scaleY(0); transform-origin: top; transition: transform 0.4s ease; }
-  .sobre-card:hover::after { transform: scaleX(1); }
-  .sobre-card:hover::before { transform: scaleY(1); }
-  .sobre-card-icon { font-size: 28px; margin-bottom: 16px; }
-  .sobre-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--cream); margin-bottom: 12px; }
-  .sobre-card p { font-size: 14px; line-height: 1.8; color: rgba(244,240,232,0.78); }
+  .tema-creme .sobre-card { background: #fff; padding: 44px 48px; border-radius: 8px; position: relative; overflow: hidden; transition: background 0.3s; border: 1px solid rgba(201,168,76,0.15); }
+  .tema-creme .sobre-card:hover { background: #faf8f4; }
+  .tema-creme .sobre-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, var(--accent), transparent); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+  .tema-creme .sobre-card::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--accent), transparent); transform: scaleY(0); transform-origin: top; transition: transform 0.4s ease; }
+  .tema-creme .sobre-card:hover::after { transform: scaleX(1); }
+  .tema-creme .sobre-card:hover::before { transform: scaleY(1); }
+  .tema-creme .sobre-card.destaque-perfumaria { border: 1px solid rgba(201,168,76,0.3); }
+  .tema-creme .sobre-card-icon { font-size: 28px; margin-bottom: 16px; }
+  .tema-creme .sobre-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--dark); margin-bottom: 12px; }
+  .tema-creme .sobre-card p { font-size: 14px; line-height: 1.8; color: rgba(17,20,24,0.75); }
 
-  /* STATS — mantém o gradiente existente, números segmentados, grade com mais opacidade */
-  .stats { background: linear-gradient(135deg, #161c24, var(--dark)); border-top: 1px solid rgba(201,168,76,0.15); border-bottom: 1px solid rgba(201,168,76,0.15); padding: 80px 24px; }
-  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(201,168,76,0.3); }
-  .stat-item { background: var(--dark); padding: 40px 24px; text-align: center; }
+  /* ── STATS (tema creme) ── */
+  .stats { border-top: 1px solid rgba(201,168,76,0.3); border-bottom: 1px solid rgba(201,168,76,0.3); padding: 80px 24px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(201,168,76,0.2); }
+  .tema-creme .stat-item { background: #fff; padding: 40px 24px; text-align: center; }
   .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300; line-height: 1; margin-bottom: 8px; }
   .stat-num.gold { color: var(--accent); }
-  .stat-num.light { color: var(--accent-light); }
-  .stat-label { font-size: 12px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
+  .stat-num.light { color: #9A7D32; }
+  .stat-label { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+  .tema-creme .stat-label { color: #7A8090; }
 
-  /* SERVIÇOS — fundo #1C2028 */
-  .servicos { background: #1C2028; }
+  /* ── SERVIÇOS (tema escuro) ── */
   .servicos-list { margin-top: 64px; display: flex; flex-direction: column; gap: 2px; }
-  .servico-item { display: flex; align-items: flex-start; gap: 32px; padding: 32px 40px; background: var(--dark); transition: background 0.3s; cursor: default; }
-  .servico-item:hover { background: #161c24; }
-  .servico-num { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 300; color: rgba(201,168,76,0.4); min-width: 56px; line-height: 1; flex-shrink: 0; }
-  .servico-content { flex: 1; }
-  .servico-content h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--cream); margin-bottom: 6px; }
-  .servico-content p { font-size: 14px; color: rgba(244,240,232,0.75); line-height: 1.7; }
-  .servico-highlight { display: inline-block; margin-top: 10px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-light); background: rgba(201,168,76,0.08); padding: 4px 12px; border-radius: 100px; }
-  .servico-icon { margin-left: auto; color: var(--accent); font-size: 20px; opacity: 0.85; flex-shrink: 0; align-self: center; }
+  .tema-escuro .servico-item { display: flex; align-items: flex-start; gap: 32px; padding: 32px 40px; background: var(--dark-mid); transition: background 0.3s; cursor: default; }
+  .tema-escuro .servico-item:hover { background: #222832; }
+  .tema-escuro .servico-num { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 300; color: rgba(201,168,76,0.4); min-width: 56px; line-height: 1; flex-shrink: 0; }
+  .tema-escuro .servico-content { flex: 1; }
+  .tema-escuro .servico-content h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--cream); margin-bottom: 6px; }
+  .tema-escuro .servico-content p { font-size: 14px; color: rgba(244,240,232,0.75); line-height: 1.7; }
+  .tema-escuro .servico-highlight { display: inline-block; margin-top: 10px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-light); background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.5); padding: 4px 12px; border-radius: 100px; }
+  .tema-escuro .servico-icon { margin-left: auto; color: var(--accent); font-size: 20px; opacity: 0.9; flex-shrink: 0; align-self: center; }
 
-  /* PACOTES — fundo #111418 */
-  .pacotes { background: #111418; }
-  .pacotes-grid { margin-top: 64px; display: flex; flex-direction: column; gap: 2px; }
-  .pacote-card { background: var(--dark-mid); display: flex; flex-wrap: wrap; position: relative; overflow: hidden; transition: background 0.3s; }
-  .pacote-card:hover { background: #222832; }
-  .pacote-card.destaque { background: #1a2030; border-left: 2px solid var(--accent); box-shadow: 0 8px 48px rgba(46,64,87,0.4); }
-  .pacote-card.personalizado { background: var(--dark-mid); border: 1px dashed rgba(201,168,76,0.25); }
+  /* ── DIFERENCIAIS (tema escuro) ── */
+  .dif-list { margin-top: 64px; display: flex; flex-direction: column; gap: 2px; }
+  .tema-escuro .dif-item { display: flex; align-items: center; gap: 32px; padding: 32px 40px; background: var(--dark-mid); transition: background 0.3s; cursor: default; }
+  .tema-escuro .dif-item:hover { background: #222832; }
+  .tema-escuro .dif-item.destaque-dif { border-left: 3px solid var(--accent); }
+  .tema-escuro .dif-item.destaque-dif .dif-content h3 { color: var(--accent-light); }
+  .tema-escuro .dif-num { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 300; color: rgba(201,168,76,0.4); min-width: 56px; line-height: 1; }
+  .tema-escuro .dif-content h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--cream); margin-bottom: 6px; }
+  .tema-escuro .dif-content p { font-size: 14px; color: rgba(244,240,232,0.75); line-height: 1.7; }
+  .tema-escuro .dif-content .destaque-num { font-weight: 500; color: var(--accent-light); }
+  .tema-escuro .dif-icon { margin-left: auto; color: var(--accent); font-size: 20px; opacity: 0.9; }
+
+  /* ── PACOTES (tema creme) ── */
+  .pacotes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 64px; }
+  .tema-creme .pacote-card { background: #fff; display: flex; flex-direction: column; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid rgba(201,168,76,0.15); border-radius: 6px; }
+  .tema-creme .pacote-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+  .tema-creme .pacote-card.destaque { background: #fff; border: 2px solid rgba(201,168,76,0.5); box-shadow: 0 8px 48px rgba(201,168,76,0.15); }
+  .tema-creme .pacote-card.personalizado { border: 1px dashed rgba(201,168,76,0.4); background: #faf8f4; }
   .pacote-tag { position: absolute; top: 20px; right: 20px; font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; z-index: 1; background: linear-gradient(135deg, #C9A84C, #E0C070); color: var(--dark); }
-  .pacote-header { padding: 40px 36px 28px; flex: 0 0 280px; }
-  .pacote-card.destaque .pacote-header { border-bottom: 1px solid rgba(201,168,76,0.3); }
-  .pacote-card:not(.destaque):not(.personalizado) .pacote-header { border-bottom: 1px solid rgba(201,168,76,0.1); }
-  .pacote-tier { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-  .pacote-name { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--cream); margin-bottom: 16px; }
+  .pacote-header { padding: 40px 36px 28px; }
+  .tema-creme .pacote-card:not(.destaque):not(.personalizado) .pacote-header { border-bottom: 1px solid rgba(201,168,76,0.15); }
+  .tema-creme .pacote-card.destaque .pacote-header { border-bottom: 1px solid rgba(201,168,76,0.35); }
+  .pacote-tier { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #9A7D32; margin-bottom: 12px; }
+  .pacote-name { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--dark); margin-bottom: 20px; }
   .pacote-price { display: flex; align-items: baseline; gap: 6px; }
-  .price-from { font-size: 11px; color: var(--muted); margin-bottom: 4px; letter-spacing: 1px; }
-  .price-currency { font-size: 14px; color: var(--muted); }
-  .pacote-card.destaque .price-value { font-family: 'Cormorant Garamond', serif; font-size: 64px; font-weight: 300; color: var(--cream); line-height: 1; }
-  .price-value { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 300; color: var(--cream); line-height: 1; }
-  .price-period { font-size: 13px; color: var(--muted); }
-  .pacote-economia { display: inline-flex; align-items: center; gap: 6px; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); color: var(--accent-light); font-size: 12px; padding: 6px 14px; border-radius: 100px; margin-top: 16px; }
-  .pacote-body { padding: 32px 36px; flex: 1; min-width: 280px; }
-  .pacote-body h4 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
-  .pacote-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
-  .pacote-features li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: rgba(244,240,232,0.75); line-height: 1.5; }
+  .price-from { font-size: 11px; color: #7A8090; margin-bottom: 4px; letter-spacing: 1px; }
+  .price-currency { font-size: 14px; color: #7A8090; }
+  .price-value { font-family: 'Cormorant Garamond', serif; font-size: 64px; font-weight: 300; color: var(--dark); line-height: 1; }
+  .price-period { font-size: 13px; color: #7A8090; }
+  .pacote-economia { display: inline-flex; align-items: center; gap: 6px; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25); color: #9A7D32; font-size: 12px; padding: 6px 14px; border-radius: 100px; margin-top: 16px; }
+  .pacote-body { padding: 32px 36px; flex: 1; }
+  .tema-creme .pacote-body h4 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #7A8090; margin-bottom: 20px; }
+  .pacote-features { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+  .tema-creme .pacote-features li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: rgba(17,20,24,0.75); line-height: 1.5; }
   .pacote-features li::before { content: '◆'; color: var(--accent); font-size: 8px; margin-top: 5px; flex-shrink: 0; }
-  .pacote-clt { background: rgba(0,0,0,0.3); border-radius: 4px; padding: 16px 20px; margin-bottom: 20px; }
-  .pacote-clt-label { font-size: 11px; color: rgba(244,240,232,0.85); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
-  .pacote-clt-value { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: var(--accent-light); text-decoration: line-through; }
-  .pacote-footer { padding: 0 36px 36px; width: 100%; }
-  .btn-proposta { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; border: 1px solid rgba(201,168,76,0.4); color: var(--accent-light); font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; text-decoration: none; transition: all 0.3s; border-radius: 2px; }
-  .btn-proposta:hover { background: var(--accent); border-color: var(--accent); color: var(--dark); }
-  .pacote-card.destaque .btn-proposta { background: linear-gradient(135deg, var(--accent), #9A7D32); border-color: transparent; color: var(--dark); font-weight: 500; }
-  .pacote-card.personalizado .btn-proposta { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
-  .pacote-card.personalizado .btn-proposta:hover { background: var(--accent); color: var(--dark); }
+  .pacote-clt { background: rgba(201,168,76,0.06); border-radius: 4px; padding: 16px 20px; margin-bottom: 28px; }
+  .tema-creme .pacote-clt-label { font-size: 11px; color: rgba(17,20,24,0.85); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .tema-creme .pacote-clt-value { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; color: #9A7D32; text-decoration: line-through; }
+  .pacote-footer { padding: 0 36px 36px; }
+  .btn-proposta { display: block; text-align: center; border: 1px solid rgba(201,168,76,0.5); color: #9A7D32; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; padding: 16px; text-decoration: none; transition: all 0.3s; border-radius: 2px; background: transparent; }
+  .btn-proposta:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .pacote-card.destaque .btn-proposta { background: linear-gradient(135deg, var(--accent), #9A7D32); border-color: transparent; color: #fff; font-weight: 500; }
+  .pacote-card.personalizado .btn-proposta { border: 1px solid var(--accent); color: #9A7D32; }
+  .pacote-card.personalizado .btn-proposta:hover { background: var(--accent); color: #fff; }
 
-  /* NOTA PERSONALIZADA */
-  .nota-personalizada { max-width: 640px; margin: 48px auto 0; padding: 28px 36px; background: rgba(201,168,76,0.04); border-left: 1px solid var(--accent); font-size: 14px; color: rgba(244,240,232,0.65); line-height: 1.7; text-align: left; }
-  .nota-personalizada strong { color: var(--accent-light); font-weight: 500; }
-
-  /* PASSOS — fundo #1C2028 */
-  .passos { background: #1C2028; }
+  /* ── PASSOS (tema escuro) ── */
   .passos-list { margin-top: 64px; position: relative; }
-  .passos-list::before { content: ''; position: absolute; left: 28px; top: 0; bottom: 10%; width: 1px; background: linear-gradient(to bottom, var(--accent), transparent 90%); }
+  .passos-list::before { content: ''; position: absolute; left: 28px; top: 0; bottom: 10%; width: 1px; background: linear-gradient(to bottom, var(--accent), transparent 92%); }
   .passo-item { display: flex; gap: 40px; padding: 0 0 48px 0; position: relative; }
-  .passo-dot { width: 56px; height: 56px; border-radius: 50%; background: var(--dark); border: 1px solid rgba(201,168,76,0.7); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--accent); position: relative; z-index: 1; transition: all 0.3s; }
-  .passo-item:last-child .passo-dot { width: 64px; height: 64px; background: var(--azul); border-color: var(--azul-claro); font-size: 24px; box-shadow: 0 0 24px rgba(46,64,87,0.5); }
+  .passo-dot { width: 56px; height: 56px; border-radius: 50%; background: var(--dark-mid); border: 1px solid rgba(201,168,76,0.7); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--accent); position: relative; z-index: 1; transition: all 0.3s; }
+  .passo-item:nth-child(4) .passo-dot { background: var(--accent); border-color: var(--accent); color: var(--dark); box-shadow: 0 0 20px rgba(201,168,76,0.3); }
+  .passo-item:last-child .passo-dot { width: 64px; height: 64px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-color: transparent; font-size: 24px; color: var(--dark); box-shadow: 0 0 28px rgba(201,168,76,0.35); }
   .passo-content { padding-top: 12px; flex: 1; }
-  .passo-content h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--cream); margin-bottom: 8px; }
-  .passo-content p { font-size: 14px; color: rgba(244,240,232,0.75); line-height: 1.7; }
+  .tema-escuro .passo-content h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--cream); margin-bottom: 8px; }
+  .tema-escuro .passo-content p { font-size: 14px; color: var(--muted); line-height: 1.7; }
 
-  /* PROVA SOCIAL */
-  .prova-social { background: var(--dark); border-top: 1px solid rgba(201,168,76,0.08); }
+  /* ── PROVA SOCIAL (tema creme) ── */
   .depoimentos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 56px; }
-  .depoimento-card { background: var(--dark-mid); padding: 36px; }
-  .depoimento-texto { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: rgba(244,240,232,0.8); line-height: 1.6; margin-bottom: 16px; }
-  .depoimento-autor { font-size: 13px; color: var(--accent); letter-spacing: 1px; }
+  .tema-creme .depoimento-card { background: #fff; padding: 36px; border: 1px solid rgba(201,168,76,0.12); border-radius: 6px; }
+  .tema-creme .depoimento-texto { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: rgba(17,20,24,0.75); line-height: 1.6; margin-bottom: 16px; }
+  .tema-creme .depoimento-autor { font-size: 13px; color: #9A7D32; letter-spacing: 1px; }
 
-  /* CTA FINAL — gradiente invertido (de baixo pra cima) */
+  /* ── CTA FINAL (gradiente invertido) ── */
   .cta-final { 
     text-align: center; 
     border-top: 1px solid rgba(201,168,76,0.15); 
@@ -193,12 +215,9 @@
     background: radial-gradient(ellipse 80% 60% at 50% 100%, #2a2212 0%, var(--dark) 70%);
   }
   .cta-final::before {
-    content: '';
-    position: absolute;
-    inset: 0;
+    content: ''; position: absolute; inset: 0;
     background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
+    pointer-events: none; z-index: 0;
   }
   .cta-final > * { position: relative; z-index: 1; }
   .cta-final h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px,6vw,72px); font-weight: 300; color: var(--cream); margin-bottom: 20px; line-height: 1.1; }
@@ -209,32 +228,37 @@
   .btn-whats:hover { transform: translateY(-2px); box-shadow: 0 16px 32px rgba(37,211,102,0.25); }
   .btn-insta { display: inline-flex; align-items: center; gap: 10px; background: transparent; border: 1px solid rgba(201,168,76,0.4); color: var(--accent-light); font-size: 14px; font-weight: 500; padding: 20px 44px; border-radius: 4px; text-decoration: none; transition: all 0.3s; }
   .btn-insta:hover { background: rgba(201,168,76,0.1); border-color: var(--accent); }
+  .garantia { display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(201,168,76,0.2); padding: 14px 28px; border-radius: 100px; font-size: 13px; color: rgba(244,240,232,0.5); letter-spacing: 0.05em; }
+  .garantia span { color: var(--accent); }
 
-  /* FOOTER */
+  /* ── FOOTER ── */
   footer { background: #0a0e14; padding: 48px 24px; text-align: center; position: relative; }
-  footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.25), transparent); }
+  footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.3), transparent); }
   footer p { font-size: 13px; color: rgba(122,128,144,0.5); position: relative; z-index: 1; }
   footer strong { color: var(--accent); }
 
+  /* ── ANIMATIONS ── */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes scrollAnim { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+  @media (max-width: 1024px) { .pacotes-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 768px) {
     .sobre-grid, .dor-grid, .depoimentos-grid { grid-template-columns: 1fr; }
     .stats-grid { grid-template-columns: repeat(2,1fr); }
+    .pacotes-grid { grid-template-columns: 1fr; }
     .passos-list::before { display: none; }
     .pacote-header { flex: 0 0 auto; width: 100%; }
     .pacote-body { width: 100%; }
-    .servico-item { flex-wrap: wrap; }
-    .servico-icon { margin-left: 0; }
+    .servico-item, .dif-item { flex-wrap: wrap; }
+    .servico-icon, .dif-icon { margin-left: 0; }
   }
 </style>
 </head>
 <body>
 
-<!-- ====== HERO ====== -->
+<!-- ====== HERO (escuro) ====== -->
 <section class="hero">
   <div class="hero-badge">Proposta Exclusiva · Assessoria Executiva B2B</div>
   <div class="hero-logo">
@@ -259,8 +283,8 @@
   <div class="hero-scroll"><div class="scroll-line"></div><span>Rolar</span></div>
 </section>
 
-<!-- ====== ESPELHO DA DOR ====== -->
-<section class="dor" id="dor">
+<!-- ====== ESPELHO DA DOR (creme) ====== -->
+<section class="dor tema-creme" id="dor">
   <div class="container">
     <div class="reveal">
       <p class="section-label">Isso está acontecendo na sua empresa?</p>
@@ -275,8 +299,8 @@
   </div>
 </section>
 
-<!-- ====== SOBRE ====== -->
-<section class="sobre">
+<!-- ====== SOBRE (creme) ====== -->
+<section class="sobre tema-creme">
   <div class="container">
     <div class="reveal">
       <p class="section-label">Quem resolve isso</p>
@@ -287,13 +311,13 @@
       <div class="sobre-card"><div class="sobre-card-icon">📋</div><h3>Frente de Atendimento</h3><p>Assumimos seu WhatsApp comercial com triagem inteligente, envio de orçamentos e dúvidas frequentes — seu cliente é atendido, você respira.</p></div>
       <div class="sobre-card"><div class="sobre-card-icon">💰</div><h3>Financeiro do Dia a Dia</h3><p>Cobrança diplomática de inadimplentes, emissão de notas e recibos, controle de Pix e cartão. Tudo registrado e na sua mesa quando precisar.</p></div>
       <div class="sobre-card"><div class="sobre-card-icon">📊</div><h3>Relatórios e Fluxo de Caixa</h3><p>Relatório financeiro mensal com entradas, saídas e saldo projetado. Decisões com dados, não com o extrato do banco.</p></div>
-      <div class="sobre-card"><div class="sobre-card-icon">🗓️</div><h3>Agenda e Confirmação</h3><p>Gestão completa de agenda com confirmação 24h antes para zerar faltas. Reagendamentos, encaixes e lembretes automáticos.</p></div>
+      <div class="sobre-card destaque-perfumaria"><div class="sobre-card-icon">🗓️</div><h3>Agenda e Confirmação</h3><p>Gestão completa de agenda com confirmação 24h antes para zerar faltas. Reagendamentos, encaixes e lembretes automáticos.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ====== STATS ====== -->
-<div class="stats">
+<!-- ====== STATS (creme) ====== -->
+<div class="stats tema-creme">
   <div class="container">
     <div class="stats-grid reveal">
       <div class="stat-item"><div class="stat-num gold">+6</div><div class="stat-label">Anos de mercado</div></div>
@@ -304,139 +328,65 @@
   </div>
 </div>
 
-<!-- ====== SERVIÇOS ====== -->
-<section class="servicos">
+<!-- ====== SERVIÇOS (escuro) ====== -->
+<section class="servicos tema-escuro">
   <div class="container">
     <div class="reveal"><p class="section-label">O que está incluso</p><h2 class="section-title">Serviços de <em>Assessoria Executiva</em></h2></div>
     <div class="servicos-list reveal">
-
-      <div class="servico-item">
-        <div class="servico-num">01</div>
-        <div class="servico-content"><h3>Gestão de Atendimento no WhatsApp</h3><p>Triagem de mensagens, resposta a dúvidas frequentes e envio de orçamentos e links de pagamento. Seu cliente é atendido com agilidade — você só entra na conversa quando for realmente necessário.</p><span class="servico-highlight">Inclui envio de orçamentos fechados</span></div>
-        <div class="servico-icon">◆</div>
-      </div>
-      <div class="servico-item">
-        <div class="servico-num">02</div>
-        <div class="servico-content"><h3>Gestão Completa de Agenda</h3><p>Marcação, reagendamento e encaixes com critérios definidos por você. Confirmamos presença 24h antes de cada compromisso para zerar faltas e imprevistos.</p><span class="servico-highlight">Confirmação 24h antes</span></div>
-        <div class="servico-icon">◆</div>
-      </div>
-      <div class="servico-item">
-        <div class="servico-num">03</div>
-        <div class="servico-content"><h3>Emissão de Notas Fiscais e Recibos</h3><p>Emitimos NF, recibos e comprovantes conforme sua operação exige. Tudo dentro do prazo e organizado para seu contador.</p></div>
-        <div class="servico-icon">◆</div>
-      </div>
-      <div class="servico-item">
-        <div class="servico-num">04</div>
-        <div class="servico-content"><h3>Cobrança Diplomática e Controle de Recebimentos</h3><p>Fazemos follow-up de inadimplentes com tom profissional e respeitoso — preservando seu relacionamento comercial. Controle de Pix, cartão e boletos em planilha atualizada.</p><span class="servico-highlight">Cobrança sem desgaste</span></div>
-        <div class="servico-icon">◆</div>
-      </div>
-      <div class="servico-item">
-        <div class="servico-num">05</div>
-        <div class="servico-content"><h3>BPO Financeiro Básico</h3><p>Contas a pagar e a receber organizadas. Agendamento de boletos e impostos no banco — você só aprova. Relatório de fluxo de caixa entregue no fim do mês para decisões com clareza.</p><span class="servico-highlight">Relatório mensal incluso</span></div>
-        <div class="servico-icon">◆</div>
-      </div>
-
+      <div class="servico-item"><div class="servico-num">01</div><div class="servico-content"><h3>Gestão de Atendimento no WhatsApp</h3><p>Triagem de mensagens, resposta a dúvidas frequentes e envio de orçamentos e links de pagamento. Seu cliente é atendido com agilidade — você só entra na conversa quando for realmente necessário.</p><span class="servico-highlight">Inclui envio de orçamentos fechados</span></div><div class="servico-icon">◆</div></div>
+      <div class="servico-item"><div class="servico-num">02</div><div class="servico-content"><h3>Gestão Completa de Agenda</h3><p>Marcação, reagendamento e encaixes com critérios definidos por você. Confirmamos presença 24h antes de cada compromisso para zerar faltas e imprevistos.</p><span class="servico-highlight">Confirmação 24h antes</span></div><div class="servico-icon">◆</div></div>
+      <div class="servico-item"><div class="servico-num">03</div><div class="servico-content"><h3>Emissão de Notas Fiscais e Recibos</h3><p>Emitimos NF, recibos e comprovantes conforme sua operação exige. Tudo dentro do prazo e organizado para seu contador.</p></div><div class="servico-icon">◆</div></div>
+      <div class="servico-item"><div class="servico-num">04</div><div class="servico-content"><h3>Cobrança Diplomática e Controle de Recebimentos</h3><p>Fazemos follow-up de inadimplentes com tom profissional e respeitoso — preservando seu relacionamento comercial. Controle de Pix, cartão e boletos em planilha atualizada.</p><span class="servico-highlight">Cobrança sem desgaste</span></div><div class="servico-icon">◆</div></div>
+      <div class="servico-item"><div class="servico-num">05</div><div class="servico-content"><h3>BPO Financeiro Básico</h3><p>Contas a pagar e a receber organizadas. Agendamento de boletos e impostos no banco — você só aprova. Relatório de fluxo de caixa entregue no fim do mês para decisões com clareza.</p><span class="servico-highlight">Relatório mensal incluso</span></div><div class="servico-icon">◆</div></div>
     </div>
   </div>
 </section>
 
-<!-- ====== PACOTES ====== -->
-<section class="pacotes" id="pacotes">
+<!-- ====== DIFERENCIAIS (escuro) ====== -->
+<section class="diferenciais tema-escuro">
   <div class="container">
-    <div class="reveal">
-      <p class="section-label">Investimento</p>
-      <h2 class="section-title">Planos que <em>cabem no seu momento</em></h2>
-      <p class="section-body">Abaixo estão nossos pacotes básicos com os serviços mais requisitados. Cada negócio é único — e seu plano também pode ser.</p>
+    <div class="reveal"><p class="section-label">Por que a MOVARE</p><h2 class="section-title">Diferenciais que<br><em>fazem a diferença</em></h2></div>
+    <div class="dif-list reveal">
+      <div class="dif-item"><div class="dif-num">01</div><div class="dif-content"><h3>Equipe Qualificada & Certificada</h3><p>2 profissionais dedicados ao seu negócio — uma responsável pelos processos administrativos e uma responsável pela experiência do cliente. Equipe certificada pela LGPD.</p></div><div class="dif-icon">◆</div></div>
+      <div class="dif-item"><div class="dif-num">02</div><div class="dif-content"><h3>Atendimento Humanizado</h3><p>Sem robôs frios, sem respostas genéricas. Cada cliente é tratado com atenção real — porque cada negócio tem sua particularidade.</p></div><div class="dif-icon">◆</div></div>
+      <div class="dif-item destaque-dif"><div class="dif-num">03</div><div class="dif-content"><h3>Metodologia Exclusiva MOVARE</h3><p>Processos desenhados para pequenas e médias empresas — nem burocracia de corporate, nem amadorismo de soluções genéricas.</p></div><div class="dif-icon">◆</div></div>
+      <div class="dif-item"><div class="dif-num">04</div><div class="dif-content"><h3>Economia Real e Mensurável</h3><p>Contratar a MOVARE é <span class="destaque-num">até 60% mais econômico</span> do que um funcionário CLT — sem encargos, sem FGTS, sem provisões.</p></div><div class="dif-icon">◆</div></div>
     </div>
-    <div class="pacotes-grid reveal">
+  </div>
+</section>
 
-      <!-- PACOTE ESSENCIAL -->
+<!-- ====== PACOTES (creme) ====== -->
+<section class="pacotes tema-creme" id="pacotes">
+  <div class="container">
+    <div class="reveal"><p class="section-label">Investimento</p><h2 class="section-title">Planos que <em>cabem no seu momento</em></h2><p class="section-body">Abaixo estão nossos pacotes básicos com os serviços mais requisitados. Cada negócio é único — e seu plano também pode ser.</p></div>
+    <div class="pacotes-grid reveal">
       <div class="pacote-card">
-        <div class="pacote-header">
-          <p class="pacote-tier">🥉 Pacote</p>
-          <h3 class="pacote-name">Essencial</h3>
-          <p class="price-from">A partir de</p>
-          <div class="pacote-price"><span class="price-currency">R$</span><span class="price-value">1.200</span><span class="price-period">/mês</span></div>
-          <div class="pacote-economia">💰 Economia de R$1.824,93/mês vs. CLT</div>
-        </div>
-        <div class="pacote-body">
-          <h4>O que está incluso</h4>
-          <ul class="pacote-features">
-            <li>Gestão de Atendimento no WhatsApp (triagem, dúvidas)</li>
-            <li>Gestão Completa de Agenda</li>
-            <li>Confirmação de presença 24h antes</li>
-            <li>Emissão de Notas Fiscais e Recibos</li>
-            <li>2 profissionais dedicados</li>
-          </ul>
-          <div class="pacote-clt">
-            <p class="pacote-clt-label">CLT equivalente custaria</p>
-            <p class="pacote-clt-value">R$ 3.024,93/mês</p>
-          </div>
-        </div>
+        <div class="pacote-header"><p class="pacote-tier">🥉 Pacote</p><h3 class="pacote-name">Essencial</h3><p class="price-from">A partir de</p><div class="pacote-price"><span class="price-currency">R$</span><span class="price-value">1.200</span><span class="price-period">/mês</span></div><div class="pacote-economia">💰 Economia de R$1.824,93/mês vs. CLT</div></div>
+        <div class="pacote-body"><h4>O que está incluso</h4><ul class="pacote-features"><li>Gestão de Atendimento no WhatsApp</li><li>Gestão Completa de Agenda</li><li>Confirmação de presença 24h antes</li><li>Emissão de Notas Fiscais e Recibos</li><li>2 profissionais dedicados</li></ul><div class="pacote-clt"><p class="pacote-clt-label">CLT equivalente custaria</p><p class="pacote-clt-value">R$ 3.024,93/mês</p></div></div>
         <div class="pacote-footer"><a href="https://wa.me/5571983136600" class="btn-proposta">Quero este pacote</a></div>
       </div>
-
-      <!-- PACOTE ESTRATÉGICO (DESTAQUE) -->
       <div class="pacote-card destaque">
         <div class="pacote-tag">Mais completo</div>
-        <div class="pacote-header">
-          <p class="pacote-tier">🥇 Pacote</p>
-          <h3 class="pacote-name">Estratégico</h3>
-          <p class="price-from">A partir de</p>
-          <div class="pacote-price"><span class="price-currency">R$</span><span class="price-value">2.200</span><span class="price-period">/mês</span></div>
-          <div class="pacote-economia">💰 Economia de R$3.146,43/mês vs. CLT</div>
-        </div>
-        <div class="pacote-body">
-          <h4>Tudo do Essencial, mais:</h4>
-          <ul class="pacote-features">
-            <li>Envio de orçamentos fechados</li>
-            <li>Envio de link de pagamento</li>
-            <li>Cobrança diplomática de inadimplentes</li>
-            <li>Controle de recebimentos (Pix/Cartão)</li>
-            <li>BPO Financeiro Básico (contas a pagar e receber)</li>
-            <li>Agendamento de boletos e impostos</li>
-            <li>Relatório financeiro de fluxo de caixa mensal</li>
-            <li>Reunião estratégica mensal</li>
-          </ul>
-          <div class="pacote-clt">
-            <p class="pacote-clt-label">CLT equivalente custaria</p>
-            <p class="pacote-clt-value">R$ 5.346,43/mês</p>
-          </div>
-        </div>
+        <div class="pacote-header"><p class="pacote-tier">🥇 Pacote</p><h3 class="pacote-name">Estratégico</h3><p class="price-from">A partir de</p><div class="pacote-price"><span class="price-currency">R$</span><span class="price-value">2.200</span><span class="price-period">/mês</span></div><div class="pacote-economia">💰 Economia de R$3.146,43/mês vs. CLT</div></div>
+        <div class="pacote-body"><h4>Tudo do Essencial, mais:</h4><ul class="pacote-features"><li>Envio de orçamentos fechados</li><li>Envio de link de pagamento</li><li>Cobrança diplomática de inadimplentes</li><li>Controle de recebimentos (Pix/Cartão)</li><li>BPO Financeiro Básico</li><li>Agendamento de boletos e impostos</li><li>Relatório financeiro mensal</li><li>Reunião estratégica mensal</li></ul><div class="pacote-clt"><p class="pacote-clt-label">CLT equivalente custaria</p><p class="pacote-clt-value">R$ 5.346,43/mês</p></div></div>
         <div class="pacote-footer"><a href="https://wa.me/5571983136600" class="btn-proposta">Quero este pacote</a></div>
       </div>
-
-      <!-- PACOTE PERSONALIZADO -->
+      <div class="pacote-card">
+        <div class="pacote-header"><p class="pacote-tier">🥈 Pacote</p><h3 class="pacote-name">Nicho</h3><p class="price-from">A partir de</p><div class="pacote-price"><span class="price-currency">R$</span><span class="price-value">3.100</span><span class="price-period">/mês</span></div><div class="pacote-economia">💰 Economia de R$4.594,64/mês vs. CLT</div></div>
+        <div class="pacote-body"><h4>Tudo do Estratégico, mais:</h4><ul class="pacote-features"><li>Atendimento adicional no Instagram</li><li>Relatórios mensais sobre vendas</li><li>Contato com ex-clientes para pós-venda</li><li>3 profissionais dedicados</li></ul><div class="pacote-clt"><p class="pacote-clt-label">CLT equivalente custaria</p><p class="pacote-clt-value">R$ 7.694,64/mês</p></div></div>
+        <div class="pacote-footer"><a href="https://wa.me/5571983136600" class="btn-proposta">Quero este pacote</a></div>
+      </div>
       <div class="pacote-card personalizado">
-        <div class="pacote-header">
-          <p class="pacote-tier">✨ Plano</p>
-          <h3 class="pacote-name">Sob Medida</h3>
-          <p class="price-from">Orçamento personalizado</p>
-          <div class="pacote-price"><span class="price-value" style="font-size:28px;">Você decide</span></div>
-        </div>
-        <div class="pacote-body">
-          <h4>Ideal para você que precisa de:</h4>
-          <ul class="pacote-features">
-            <li>Apenas os serviços essenciais que sua operação realmente demanda</li>
-            <li>Um escopo enxuto, sem pagar pelo que não usa</li>
-            <li>Horários e cobertura ajustados à sua rotina</li>
-            <li>Integração com sistemas que você já utiliza</li>
-          </ul>
-          <p style="font-size:13px; color:rgba(244,240,232,0.55); line-height:1.8; margin-top:12px;">
-            Sabe aqueles serviços básicos que travam seu dia mas não precisam do pacote completo?<br>
-            <strong style="color:var(--accent-light);">Monte seu plano com a gente.</strong>
-            Envie sua demanda — em até 24h você recebe uma proposta ajustada, sem compromisso.
-          </p>
-        </div>
+        <div class="pacote-header"><p class="pacote-tier">✨ Plano</p><h3 class="pacote-name">Sob Medida</h3><p class="price-from">Orçamento personalizado</p><div class="pacote-price"><span class="price-value" style="font-size:26px;">Você decide</span></div></div>
+        <div class="pacote-body"><h4>Ideal para você que:</h4><ul class="pacote-features"><li>Precisa de um escopo diferente dos pacotes prontos</li><li>Quer combinar serviços específicos</li><li>Tem demandas sazonais ou horários alternativos</li><li>Busca integrar sistemas que já utiliza</li></ul><p style="font-size:13px;color:rgba(17,20,24,0.55);line-height:1.8;margin-top:12px;">Monte seu plano com a gente. Envie sua demanda e em até 24h você recebe uma proposta ajustada, sem compromisso.</p></div>
         <div class="pacote-footer"><a href="https://wa.me/5571983136600" class="btn-proposta">Pedir orçamento personalizado</a></div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ====== PASSOS ====== -->
-<section class="passos">
+<!-- ====== PASSOS (escuro) ====== -->
+<section class="passos tema-escuro">
   <div class="container">
     <div class="reveal"><p class="section-label">Como começamos</p><h2 class="section-title">Próximos passos <em>após aprovação</em></h2></div>
     <div class="passos-list reveal">
@@ -450,13 +400,10 @@
   </div>
 </section>
 
-<!-- ====== PROVA SOCIAL ====== -->
-<section class="prova-social">
+<!-- ====== PROVA SOCIAL (creme) ====== -->
+<section class="prova-social tema-creme">
   <div class="container">
-    <div class="reveal">
-      <p class="section-label">Quem já transformou a operação</p>
-      <h2 class="section-title">Depoimentos <em>de clientes</em></h2>
-    </div>
+    <div class="reveal"><p class="section-label">Quem já transformou a operação</p><h2 class="section-title">Depoimentos <em>de clientes</em></h2></div>
     <div class="depoimentos-grid reveal">
       <div class="depoimento-card"><p class="depoimento-texto">"Parei de perder cliente por falta de resposta. A MOVARE assumiu o WhatsApp com triagem e orçamentos — meu celular finalmente parou de apitar 24h."</p><p class="depoimento-autor">— Empresário, setor de serviços B2B</p></div>
       <div class="depoimento-card"><p class="depoimento-texto">"O financeiro era um caos. Agora sei exatamente quanto entra, quanto sai e quanto sobra. A cobrança diplomática salvou meu fluxo de caixa."</p><p class="depoimento-autor">— Diretor comercial, indústria</p></div>
@@ -464,21 +411,16 @@
   </div>
 </section>
 
-<!-- ====== CTA FINAL ====== -->
+<!-- ====== CTA FINAL (escuro) ====== -->
 <section class="cta-final">
   <div class="container reveal">
     <h2>Vamos estruturar<br><em>o seu negócio?</em></h2>
     <p>Escolha um plano ou peça um orçamento personalizado — a transformação da sua gestão começa ainda esta semana.</p>
     <div class="cta-buttons">
-      <a href="https://wa.me/5571983136600" class="btn-whats">
-        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Falar pelo WhatsApp
-      </a>
-      <a href="https://instagram.com/movare.br" class="btn-insta">
-        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        @movare.br
-      </a>
+      <a href="https://wa.me/5571983136600" class="btn-whats"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Falar pelo WhatsApp</a>
+      <a href="https://instagram.com/movare.br" class="btn-insta"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>@movare.br</a>
     </div>
+    <div class="garantia"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg><span>Proposta válida · </span>Sigilo total garantido · Emissão de NF</div>
   </div>
 </section>
 
