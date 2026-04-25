@@ -11,8 +11,6 @@
     --cream: #F4F0E8;
     --dark: #111418;
     --dark-mid: #1C2028;
-    --blue: #2E4057;
-    --blue-light: #4A6FA5;
     --accent: #C9A84C;
     --accent-light: #E0C070;
     --muted: #7A8090;
@@ -109,88 +107,49 @@
   /* SERVIÇOS */
   .servicos { background: var(--dark-mid); }
   .servicos-list { margin-top: 64px; display: flex; flex-direction: column; gap: 2px; }
-  .servico-item { display: flex; align-items: center; gap: 32px; padding: 32px 40px; background: var(--dark); transition: background 0.3s; cursor: default; }
+  .servico-item { display: flex; align-items: flex-start; gap: 32px; padding: 32px 40px; background: var(--dark); transition: background 0.3s; cursor: default; }
   .servico-item:hover { background: #161c24; }
-  .servico-num { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 300; color: rgba(201,168,76,0.2); min-width: 56px; line-height: 1; }
+  .servico-num { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 300; color: rgba(201,168,76,0.2); min-width: 56px; line-height: 1; flex-shrink: 0; }
+  .servico-content { flex: 1; }
   .servico-content h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--cream); margin-bottom: 6px; }
   .servico-content p { font-size: 14px; color: rgba(244,240,232,0.75); line-height: 1.7; }
-  .servico-icon { margin-left: auto; color: var(--accent); font-size: 20px; opacity: 0.6; }
+  .servico-highlight { display: inline-block; margin-top: 10px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-light); background: rgba(201,168,76,0.08); padding: 4px 12px; border-radius: 100px; }
+  .servico-icon { margin-left: auto; color: var(--accent); font-size: 20px; opacity: 0.6; flex-shrink: 0; align-self: center; }
 
   /* PACOTES */
   .pacotes { background: var(--dark); }
-  .pacotes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 64px; }
-  .pacote-card { background: var(--dark-mid); display: flex; flex-direction: column; position: relative; overflow: hidden; transition: transform 0.3s ease; }
-  .pacote-card:hover { transform: translateY(-4px); }
-  .pacote-card.destaque { background: #1a2030; border: 1px solid rgba(201,168,76,0.3); }
-  .pacote-tag { position: absolute; top: 20px; right: 20px; background: var(--accent); color: var(--dark); font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; }
-  .pacote-header { padding: 40px 36px 28px; border-bottom: 1px solid rgba(201,168,76,0.1); }
+  .pacotes-grid { margin-top: 64px; display: flex; flex-direction: column; gap: 2px; }
+  .pacote-card { background: var(--dark-mid); display: flex; flex-wrap: wrap; position: relative; overflow: hidden; transition: background 0.3s; }
+  .pacote-card:hover { background: #222832; }
+  .pacote-card.destaque { background: #1a2030; border-left: 2px solid var(--accent); }
+  .pacote-card.personalizado { background: var(--dark-mid); border: 1px dashed rgba(201,168,76,0.25); }
+  .pacote-tag { position: absolute; top: 20px; right: 20px; background: var(--accent); color: var(--dark); font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; z-index: 1; }
+  .pacote-header { padding: 40px 36px 28px; border-bottom: 1px solid rgba(201,168,76,0.1); flex: 0 0 280px; }
   .pacote-tier { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-  .pacote-name { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--cream); margin-bottom: 20px; }
+  .pacote-name { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--cream); margin-bottom: 16px; }
   .pacote-price { display: flex; align-items: baseline; gap: 6px; }
-  .price-currency { font-size: 14px; color: var(--muted); }
-  .price-value { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: var(--cream); line-height: 1; }
-  .price-period { font-size: 13px; color: var(--muted); }
   .price-from { font-size: 11px; color: var(--muted); margin-bottom: 4px; letter-spacing: 1px; }
-
-  /* Estilo da Economia */
-  .pacote-economia {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(201,168,76,0.1);
-    border: 1px solid rgba(201,168,76,0.3);
-    color: var(--accent-light);
-    font-size: 12px;
-    padding: 6px 14px;
-    border-radius: 100px;
-    margin-top: 16px;
-  }
-
-  .pacote-body { padding: 32px 36px; flex: 1; }
+  .price-currency { font-size: 14px; color: var(--muted); }
+  .price-value { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 300; color: var(--cream); line-height: 1; }
+  .price-period { font-size: 13px; color: var(--muted); }
+  .pacote-economia { display: inline-flex; align-items: center; gap: 6px; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); color: var(--accent-light); font-size: 12px; padding: 6px 14px; border-radius: 100px; margin-top: 16px; }
+  .pacote-body { padding: 32px 36px; flex: 1; min-width: 280px; }
   .pacote-body h4 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
-  .pacote-features { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+  .pacote-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
   .pacote-features li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: rgba(244,240,232,0.75); line-height: 1.5; }
   .pacote-features li::before { content: '◆'; color: var(--accent); font-size: 8px; margin-top: 5px; flex-shrink: 0; }
-
-  /* Bloco CLT Equivalente */
-  .pacote-clt {
-    background: rgba(0,0,0,0.3);
-    border-radius: 4px;
-    padding: 16px 20px;
-    margin-bottom: 28px;
-  }
-  .pacote-clt-label {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-  .pacote-clt-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
-    font-weight: 300;
-    color: rgba(244,240,232,0.4);
-    text-decoration: line-through;
-  }
-
-  .pacote-footer { padding: 0 36px 36px; }
-  .btn-proposta { display: block; text-align: center; background: transparent; border: 1px solid rgba(201,168,76,0.4); color: var(--accent-light); font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; padding: 16px; text-decoration: none; transition: all 0.3s; border-radius: 2px; }
+  .pacote-clt { background: rgba(0,0,0,0.3); border-radius: 4px; padding: 16px 20px; margin-bottom: 20px; }
+  .pacote-clt-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .pacote-clt-value { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: rgba(244,240,232,0.4); text-decoration: line-through; }
+  .pacote-footer { padding: 0 36px 36px; width: 100%; }
+  .btn-proposta { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; border: 1px solid rgba(201,168,76,0.4); color: var(--accent-light); font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; text-decoration: none; transition: all 0.3s; border-radius: 2px; }
   .btn-proposta:hover { background: var(--accent); border-color: var(--accent); color: var(--dark); }
   .pacote-card.destaque .btn-proposta { background: linear-gradient(135deg, var(--accent), #9A7D32); border-color: transparent; color: var(--dark); font-weight: 500; }
+  .pacote-card.personalizado .btn-proposta { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
+  .pacote-card.personalizado .btn-proposta:hover { background: var(--accent); color: var(--dark); }
 
   /* NOTA PERSONALIZADA */
-  .nota-personalizada {
-    max-width: 640px;
-    margin: 48px auto 0;
-    padding: 28px 36px;
-    background: rgba(201,168,76,0.04);
-    border-left: 1px solid var(--accent);
-    font-size: 14px;
-    color: rgba(244,240,232,0.65);
-    line-height: 1.7;
-    text-align: left;
-  }
+  .nota-personalizada { max-width: 640px; margin: 48px auto 0; padding: 28px 36px; background: rgba(201,168,76,0.04); border-left: 1px solid var(--accent); font-size: 14px; color: rgba(244,240,232,0.65); line-height: 1.7; text-align: left; }
   .nota-personalizada strong { color: var(--accent-light); font-weight: 500; }
 
   /* PASSOS */
@@ -203,7 +162,7 @@
   .passo-content h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--cream); margin-bottom: 8px; }
   .passo-content p { font-size: 14px; color: rgba(244,240,232,0.75); line-height: 1.7; }
 
-  /* PROVA SOCIAL - depoimentos */
+  /* PROVA SOCIAL */
   .prova-social { background: var(--dark); border-top: 1px solid rgba(201,168,76,0.08); }
   .depoimentos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 56px; }
   .depoimento-card { background: var(--dark-mid); padding: 36px; }
@@ -245,7 +204,16 @@
   @keyframes scrollAnim { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
-  @media (max-width: 768px) { .sobre-grid, .pacotes-grid, .dor-grid, .depoimentos-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2,1fr); } .passos-list::before { display: none; } }
+
+  @media (max-width: 768px) {
+    .sobre-grid, .dor-grid, .depoimentos-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2,1fr); }
+    .passos-list::before { display: none; }
+    .pacote-header { flex: 0 0 auto; width: 100%; }
+    .pacote-body { width: 100%; }
+    .servico-item { flex-wrap: wrap; }
+    .servico-icon { margin-left: 0; }
+  }
 </style>
 </head>
 <body>
@@ -266,7 +234,7 @@
   <h1>MOVARE<br><em>Assessoria Executiva</em></h1>
   <p class="hero-sub">Seu negócio cresceu.<br>A operação, não.</p>
   <div class="hero-divider"></div>
-  <p class="hero-intro">Processos que não existem, decisões no escuro e você no centro de tudo. A MOVARE assume a gestão administrativa para que você volte a ser empresário — não bombeiro.</p>
+  <p class="hero-intro">Processos que não existem, decisões no escuro e você no centro de tudo. A MOVARE assume a gestão administrativa e financeira para que você volte a ser empresário — não bombeiro.</p>
   <a href="#dor" class="hero-cta">Entenda como <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
   <div class="hero-scroll"><div class="scroll-line"></div><span>Rolar</span></div>
 </section>
@@ -280,20 +248,20 @@
     </div>
     <div class="dor-grid reveal">
       <div class="dor-card">
-        <div class="dor-card-icon">🔗</div>
-        <p>"Tudo para em mim. Se eu não responder, o negócio não anda. Sou o maior gargalo da minha própria empresa."</p>
+        <div class="dor-card-icon">📱</div>
+        <p>"Passo horas respondendo WhatsApp. Orçamentos atrasam, clientes somem e eu não tenho tempo para o que realmente importa."</p>
       </div>
       <div class="dor-card">
-        <div class="dor-card-icon">📉</div>
-        <p>"Tomo decisões importantes com base em feeling. Sei que estou perdendo dinheiro, mas não tenho relatórios claros para entender onde."</p>
+        <div class="dor-card-icon">💸</div>
+        <p>"Tenho dinheiro a receber mas não sei cobrar. Fico com vergonha e o fluxo de caixa sofre no fim do mês."</p>
       </div>
       <div class="dor-card">
         <div class="dor-card-icon">📄</div>
-        <p>"Contratos se perdem no e-mail. Não sei quais vencem amanhã. Já assinei coisa errada por falta de histórico organizado."</p>
+        <p>"Emissão de nota fiscal, boleto, recibo — tudo para mim. Se eu não fizer, não acontece. E sempre tem algo vencendo."</p>
       </div>
       <div class="dor-card">
-        <div class="dor-card-icon">⏳</div>
-        <p>"Sei que preciso de um CRM/ERP estruturado, mas não tenho tempo nem equipe interna para implantar e treinar o time."</p>
+        <div class="dor-card-icon">📊</div>
+        <p>"Não sei para onde foi o dinheiro. No fim do mês, olho o saldo e me pergunto: cadê o lucro?"</p>
       </div>
     </div>
   </div>
@@ -308,10 +276,10 @@
       <p class="section-body">A MOVARE atua desde 2020 com suporte administrativo, financeiro e operacional para empresas que precisam de mais do que uma assistente — precisam de uma parceira estratégica que entrega estrutura, não só tarefa.</p>
     </div>
     <div class="sobre-grid reveal">
-      <div class="sobre-card"><div class="sobre-card-icon">📋</div><h3>Gestão de Processos</h3><p>Mapeamos, documentamos e implantamos processos internos que eliminam gargalos e criam previsibilidade para a sua operação crescer sem depender de você.</p></div>
-      <div class="sobre-card"><div class="sobre-card-icon">📊</div><h3>Relatórios Gerenciais</h3><p>Elaboramos relatórios mensais de acompanhamento de resultados, indicadores e metas — para que você tome decisões com dados, não com achismo.</p></div>
-      <div class="sobre-card"><div class="sobre-card-icon">🗂️</div><h3>Gestão Documental</h3><p>Organização de contratos, documentos e fluxos de aprovação. Tudo estruturado, acessível e seguro — com total conformidade com a LGPD.</p></div>
-      <div class="sobre-card"><div class="sobre-card-icon">⚙️</div><h3>Implantação de CRM/ERP</h3><p>Configuração e implantação de sistemas personalizados para o seu negócio. Do zero à operação completa, com treinamento da equipe incluído.</p></div>
+      <div class="sobre-card"><div class="sobre-card-icon">📋</div><h3>Frente de Atendimento</h3><p>Assumimos seu WhatsApp comercial com triagem inteligente, envio de orçamentos e dúvidas frequentes — seu cliente é atendido, você respira.</p></div>
+      <div class="sobre-card"><div class="sobre-card-icon">💰</div><h3>Financeiro do Dia a Dia</h3><p>Cobrança diplomática de inadimplentes, emissão de notas e recibos, controle de Pix e cartão. Tudo registrado e na sua mesa quando precisar.</p></div>
+      <div class="sobre-card"><div class="sobre-card-icon">📊</div><h3>Relatórios e Fluxo de Caixa</h3><p>Relatório financeiro mensal com entradas, saídas e saldo projetado. Decisões com dados, não com o extrato do banco.</p></div>
+      <div class="sobre-card"><div class="sobre-card-icon">🗓️</div><h3>Agenda e Confirmação</h3><p>Gestão completa de agenda com confirmação 24h antes para zerar faltas. Reagendamentos, encaixes e lembretes automáticos.</p></div>
     </div>
   </div>
 </section>
@@ -333,11 +301,56 @@
   <div class="container">
     <div class="reveal"><p class="section-label">O que está incluso</p><h2 class="section-title">Serviços de <em>Assessoria Executiva</em></h2></div>
     <div class="servicos-list reveal">
-      <div class="servico-item"><div class="servico-num">01</div><div class="servico-content"><h3>Implantação de Processos Internos</h3><p>Mapeamento completo dos fluxos de trabalho, identificação de gargalos e implantação de processos documentados que funcionam sem você no centro.</p></div><div class="servico-icon">◆</div></div>
-      <div class="servico-item"><div class="servico-num">02</div><div class="servico-content"><h3>Gestão de Documentos e Contratos</h3><p>Organização, arquivo e gestão do ciclo de vida de documentos e contratos. Nunca mais perca prazo ou assine algo sem ter o histórico completo.</p></div><div class="servico-icon">◆</div></div>
-      <div class="servico-item"><div class="servico-num">03</div><div class="servico-content"><h3>Configuração de CRM e ERP</h3><p>Implantamos e configuramos as ferramentas certas para o seu negócio: CRM de vendas, ERP financeiro, gestão de projetos e muito mais.</p></div><div class="servico-icon">◆</div></div>
-      <div class="servico-item"><div class="servico-num">04</div><div class="servico-content"><h3>Relatórios Gerenciais Mensais</h3><p>Relatórios claros e objetivos com os principais indicadores do seu negócio — para você acompanhar resultados e tomar decisões com segurança.</p></div><div class="servico-icon">◆</div></div>
-      <div class="servico-item"><div class="servico-num">05</div><div class="servico-content"><h3>Suporte à Tomada de Decisão</h3><p>Análise de cenários, organização de informações e suporte estratégico para que você foque no que importa: crescer o negócio.</p></div><div class="servico-icon">◆</div></div>
+
+      <div class="servico-item">
+        <div class="servico-num">01</div>
+        <div class="servico-content">
+          <h3>Gestão de Atendimento no WhatsApp</h3>
+          <p>Triagem de mensagens, resposta a dúvidas frequentes e envio de orçamentos e links de pagamento. Seu cliente é atendido com agilidade — você só entra na conversa quando for realmente necessário.</p>
+          <span class="servico-highlight">Inclui envio de orçamentos fechados</span>
+        </div>
+        <div class="servico-icon">◆</div>
+      </div>
+
+      <div class="servico-item">
+        <div class="servico-num">02</div>
+        <div class="servico-content">
+          <h3>Gestão Completa de Agenda</h3>
+          <p>Marcação, reagendamento e encaixes com critérios definidos por você. Confirmamos presença 24h antes de cada compromisso para zerar faltas e imprevistos.</p>
+          <span class="servico-highlight">Confirmação 24h antes</span>
+        </div>
+        <div class="servico-icon">◆</div>
+      </div>
+
+      <div class="servico-item">
+        <div class="servico-num">03</div>
+        <div class="servico-content">
+          <h3>Emissão de Notas Fiscais e Recibos</h3>
+          <p>Emitimos NF, recibos e comprovantes conforme sua operação exige. Tudo dentro do prazo e organizado para seu contador.</p>
+        </div>
+        <div class="servico-icon">◆</div>
+      </div>
+
+      <div class="servico-item">
+        <div class="servico-num">04</div>
+        <div class="servico-content">
+          <h3>Cobrança Diplomática e Controle de Recebimentos</h3>
+          <p>Fazemos follow-up de inadimplentes com tom profissional e respeitoso — preservando seu relacionamento comercial. Controle de Pix, cartão e boletos em planilha atualizada.</p>
+          <span class="servico-highlight">Cobrança sem desgaste</span>
+        </div>
+        <div class="servico-icon">◆</div>
+      </div>
+
+      <div class="servico-item">
+        <div class="servico-num">05</div>
+        <div class="servico-content">
+          <h3>BPO Financeiro Básico</h3>
+          <p>Contas a pagar e a receber organizadas. Agendamento de boletos e impostos no banco — você só aprova. Relatório de fluxo de caixa entregue no fim do mês para decisões com clareza.</p>
+          <span class="servico-highlight">Relatório mensal incluso</span>
+        </div>
+        <div class="servico-icon">◆</div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -347,11 +360,11 @@
   <div class="container">
     <div class="reveal">
       <p class="section-label">Investimento</p>
-      <h2 class="section-title">Pacotes que <em>cabem no seu momento</em></h2>
-      <p class="section-body">Abaixo estão nossos pacotes básicos. Cada negócio tem necessidades únicas — entre em contato para receber uma proposta personalizada, ajustada ao seu cenário real.</p>
+      <h2 class="section-title">Planos que <em>cabem no seu momento</em></h2>
+      <p class="section-body">Abaixo estão nossos pacotes básicos com os serviços mais requisitados. Cada negócio é único — e seu plano também pode ser.</p>
     </div>
     <div class="pacotes-grid reveal">
-      
+
       <!-- PACOTE ESSENCIAL -->
       <div class="pacote-card">
         <div class="pacote-header">
@@ -359,19 +372,16 @@
           <h3 class="pacote-name">Essencial</h3>
           <p class="price-from">A partir de</p>
           <div class="pacote-price"><span class="price-currency">R$</span><span class="price-value">1.200</span><span class="price-period">/mês</span></div>
-          <div class="pacote-economia">
-            💰 Economia de R$1.824,93/mês vs. CLT
-          </div>
+          <div class="pacote-economia">💰 Economia de R$1.824,93/mês vs. CLT</div>
         </div>
         <div class="pacote-body">
           <h4>O que está incluso</h4>
           <ul class="pacote-features">
-            <li>Gestão de agenda e e-mails</li>
-            <li>Organização de documentos</li>
-            <li>Controle de contratos</li>
-            <li>Relatório mensal básico</li>
+            <li>Gestão de Atendimento no WhatsApp (triagem, dúvidas)</li>
+            <li>Gestão Completa de Agenda</li>
+            <li>Confirmação de presença 24h antes</li>
+            <li>Emissão de Notas Fiscais e Recibos</li>
             <li>2 profissionais dedicados</li>
-            <li>Emissão de Nota Fiscal</li>
           </ul>
           <div class="pacote-clt">
             <p class="pacote-clt-label">CLT equivalente custaria</p>
@@ -380,7 +390,7 @@
         </div>
         <div class="pacote-footer"><a href="https://wa.me/5571983136600" class="btn-proposta">Quero este pacote</a></div>
       </div>
-      
+
       <!-- PACOTE ESTRATÉGICO (DESTAQUE) -->
       <div class="pacote-card destaque">
         <div class="pacote-tag">Mais completo</div>
@@ -389,18 +399,18 @@
           <h3 class="pacote-name">Estratégico</h3>
           <p class="price-from">A partir de</p>
           <div class="pacote-price"><span class="price-currency">R$</span><span class="price-value">2.200</span><span class="price-period">/mês</span></div>
-          <div class="pacote-economia">
-            💰 Economia de R$3.146,43/mês vs. CLT
-          </div>
+          <div class="pacote-economia">💰 Economia de R$3.146,43/mês vs. CLT</div>
         </div>
         <div class="pacote-body">
           <h4>Tudo do Essencial, mais:</h4>
           <ul class="pacote-features">
-            <li>Implantação de CRM/ERP</li>
-            <li>Mapeamento de processos internos</li>
-            <li>Relatórios gerenciais completos</li>
-            <li>Suporte à tomada de decisão</li>
-            <li>Gestão de fornecedores</li>
+            <li>Envio de orçamentos fechados</li>
+            <li>Envio de link de pagamento</li>
+            <li>Cobrança diplomática de inadimplentes</li>
+            <li>Controle de recebimentos (Pix/Cartão)</li>
+            <li>BPO Financeiro Básico (contas a pagar e receber)</li>
+            <li>Agendamento de boletos e impostos</li>
+            <li>Relatório financeiro de fluxo de caixa mensal</li>
             <li>Reunião estratégica mensal</li>
           </ul>
           <div class="pacote-clt">
@@ -410,9 +420,32 @@
         </div>
         <div class="pacote-footer"><a href="https://wa.me/5571983136600" class="btn-proposta">Quero este pacote</a></div>
       </div>
-    </div>
-    <div class="nota-personalizada reveal">
-      <strong>Proposta personalizada?</strong> Os valores acima refletem nossos pacotes base. Se o seu negócio exige um escopo diferente — mais horas, demandas específicas ou integração com sistemas legados — fale com a gente pelo WhatsApp. Em até 24h você recebe uma proposta ajustada, sem compromisso.
+
+      <!-- PACOTE PERSONALIZADO -->
+      <div class="pacote-card personalizado">
+        <div class="pacote-header">
+          <p class="pacote-tier">✨ Plano</p>
+          <h3 class="pacote-name">Sob Medida</h3>
+          <p class="price-from">Orçamento personalizado</p>
+          <div class="pacote-price"><span class="price-value" style="font-size:28px;">Você decide</span></div>
+        </div>
+        <div class="pacote-body">
+          <h4>Ideal para você que precisa de:</h4>
+          <ul class="pacote-features">
+            <li>Apenas os serviços essenciais que sua operação realmente demanda</li>
+            <li>Um escopo enxuto, sem pagar pelo que não usa</li>
+            <li>Horários e cobertura ajustados à sua rotina</li>
+            <li>Integração com sistemas que você já utiliza</li>
+          </ul>
+          <p style="font-size:13px; color:rgba(244,240,232,0.55); line-height:1.8; margin-top:12px;">
+            Sabe aqueles serviços básicos que travam seu dia mas não precisam do pacote completo?<br>
+            <strong style="color:var(--accent-light);">Monte seu plano com a gente.</strong>
+            Envie sua demanda — em até 24h você recebe uma proposta ajustada, sem compromisso.
+          </p>
+        </div>
+        <div class="pacote-footer"><a href="https://wa.me/5571983136600" class="btn-proposta">Pedir orçamento personalizado</a></div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -441,11 +474,11 @@
     </div>
     <div class="depoimentos-grid reveal">
       <div class="depoimento-card">
-        <p class="depoimento-texto">"Com a MOVARE, consegui finalmente mapear os processos do meu negócio. Hoje sei exatamente quem faz o quê — e não dependo mais de mim para cada decisão operacional."</p>
+        <p class="depoimento-texto">"Parei de perder cliente por falta de resposta. A MOVARE assumiu o WhatsApp com triagem e orçamentos — meu celular finalmente parou de apitar 24h."</p>
         <p class="depoimento-autor">— Empresário, setor de serviços B2B</p>
       </div>
       <div class="depoimento-card">
-        <p class="depoimento-texto">"A implantação do CRM foi o divisor de águas. Em dois meses, o time de vendas já operava com o sistema e eu tinha relatórios que nunca tive antes."</p>
+        <p class="depoimento-texto">"O financeiro era um caos. Agora sei exatamente quanto entra, quanto sai e quanto sobra. A cobrança diplomática salvou meu fluxo de caixa."</p>
         <p class="depoimento-autor">— Diretor comercial, indústria</p>
       </div>
     </div>
@@ -456,7 +489,7 @@
 <section class="cta-final">
   <div class="container reveal">
     <h2>Vamos estruturar<br><em>o seu negócio?</em></h2>
-    <p>Escolha um pacote base ou peça uma proposta personalizada — a transformação da sua gestão começa ainda esta semana.</p>
+    <p>Escolha um plano ou peça um orçamento personalizado — a transformação da sua gestão começa ainda esta semana.</p>
     <div class="cta-buttons">
       <a href="https://wa.me/5571983136600" class="btn-whats">
         <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
