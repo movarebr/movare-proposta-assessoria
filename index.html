@@ -11,6 +11,8 @@
     --cream: #F4F0E8;
     --dark: #111418;
     --dark-mid: #1C2028;
+    --azul: #2E4057;
+    --azul-claro: #4A6FA5;
     --accent: #C9A84C;
     --accent-light: #E0C070;
     --muted: #7A8090;
@@ -23,7 +25,7 @@
     min-height: 100vh;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; position: relative; padding: 60px 24px; overflow: hidden;
-    background: radial-gradient(ellipse 80% 60% at 50% 0%, #2a2212 0%, var(--dark) 70%);
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, #2a2212 0%, var(--dark) 60%);
   }
   .hero::before {
     content: '';
@@ -35,10 +37,10 @@
   }
   .hero > * { position: relative; z-index: 1; }
   .hero-badge {
-    display: inline-block; border: 1px solid rgba(201,168,76,0.5);
+    display: inline-block; border: 1px solid rgba(201,168,76,0.8);
     color: var(--accent-light); font-size: 11px; font-weight: 500;
     letter-spacing: 3px; text-transform: uppercase; padding: 8px 20px;
-    border-radius: 100px; margin-bottom: 36px; background: rgba(201,168,76,0.08);
+    border-radius: 100px; margin-bottom: 36px; background: rgba(201,168,76,0.15);
     backdrop-filter: blur(5px); animation: fadeUp 0.8s ease both;
   }
   .hero-logo { margin-bottom: 24px; animation: fadeUp 0.8s 0.1s ease both; }
@@ -55,7 +57,7 @@
     max-width: 640px; margin: 0 auto 16px; line-height: 1.4;
     animation: fadeUp 0.8s 0.3s ease both;
   }
-  .hero-divider { width: 60px; height: 1px; background: linear-gradient(to right,transparent,var(--accent),transparent); margin: 0 auto 48px; animation: fadeUp 0.8s 0.35s ease both; }
+  .hero-divider { width: 80px; height: 1px; background: linear-gradient(to right,transparent,var(--accent),transparent); margin: 0 auto 48px; opacity: 0.9; animation: fadeUp 0.8s 0.35s ease both; }
   .hero-intro { max-width: 560px; font-size: 16px; line-height: 1.8; color: rgba(244,240,232,0.7); margin-bottom: 52px; animation: fadeUp 0.8s 0.4s ease both; }
   .hero-cta {
     display: inline-flex; align-items: center; gap: 10px;
@@ -65,6 +67,10 @@
     text-decoration: none; transition: all 0.3s ease; animation: fadeUp 0.8s 0.5s ease both;
   }
   .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 20px 40px rgba(201,168,76,0.3); }
+  .hero-meta { display: flex; gap: 40px; margin-top: 40px; animation: fadeUp 0.8s 0.55s ease both; }
+  .hero-meta-item { text-align: center; }
+  .hero-meta-value { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 400; color: #FFFFFF; line-height: 1.2; }
+  .hero-meta-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-light); }
   .hero-scroll { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; animation: fadeUp 1s 1s ease both; }
   .hero-scroll span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
   .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollAnim 2s ease infinite; }
@@ -78,58 +84,65 @@
   .section-title em { font-style: italic; color: var(--accent-light); }
   .section-body { font-size: 16px; line-height: 1.85; color: rgba(244,240,232,0.65); max-width: 620px; }
 
-  /* ESPELHO DA DOR */
-  .dor { background: var(--dark-mid); }
+  /* ESPELHO DA DOR — fundo #111418 */
+  .dor { background: #111418; }
   .dor-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 56px; }
-  .dor-card { background: var(--dark); padding: 36px; transition: background 0.3s; }
+  .dor-card { background: var(--dark-mid); padding: 44px 48px; border-radius: 6px; transition: background 0.3s, box-shadow 0.3s; }
   .dor-card:hover { background: #161c24; }
   .dor-card-icon { font-size: 24px; margin-bottom: 12px; }
   .dor-card p { font-size: 14px; color: rgba(244,240,232,0.7); line-height: 1.7; font-style: italic; }
 
-  /* SOBRE */
-  .sobre { background: var(--dark); }
+  /* SOBRE — fundo #111418 */
+  .sobre { background: #111418; }
   .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 64px; }
-  .sobre-card { background: var(--dark-mid); padding: 40px; position: relative; overflow: hidden; transition: background 0.3s; }
+  .sobre-card { background: var(--dark-mid); padding: 44px 48px; border-radius: 6px; position: relative; overflow: hidden; transition: background 0.3s; }
   .sobre-card:hover { background: #222832; }
   .sobre-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, var(--accent), transparent); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+  .sobre-card::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--accent), transparent); transform: scaleY(0); transform-origin: top; transition: transform 0.4s ease; }
   .sobre-card:hover::after { transform: scaleX(1); }
+  .sobre-card:hover::before { transform: scaleY(1); }
   .sobre-card-icon { font-size: 28px; margin-bottom: 16px; }
   .sobre-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--cream); margin-bottom: 12px; }
   .sobre-card p { font-size: 14px; line-height: 1.8; color: rgba(244,240,232,0.78); }
 
-  /* STATS */
+  /* STATS — mantém o gradiente existente, números segmentados, grade com mais opacidade */
   .stats { background: linear-gradient(135deg, #161c24, var(--dark)); border-top: 1px solid rgba(201,168,76,0.15); border-bottom: 1px solid rgba(201,168,76,0.15); padding: 80px 24px; }
-  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(201,168,76,0.1); }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(201,168,76,0.3); }
   .stat-item { background: var(--dark); padding: 40px 24px; text-align: center; }
-  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300; color: var(--accent-light); line-height: 1; margin-bottom: 8px; }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300; line-height: 1; margin-bottom: 8px; }
+  .stat-num.gold { color: var(--accent); }
+  .stat-num.light { color: var(--accent-light); }
   .stat-label { font-size: 12px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
 
-  /* SERVIÇOS */
-  .servicos { background: var(--dark-mid); }
+  /* SERVIÇOS — fundo #1C2028 */
+  .servicos { background: #1C2028; }
   .servicos-list { margin-top: 64px; display: flex; flex-direction: column; gap: 2px; }
   .servico-item { display: flex; align-items: flex-start; gap: 32px; padding: 32px 40px; background: var(--dark); transition: background 0.3s; cursor: default; }
   .servico-item:hover { background: #161c24; }
-  .servico-num { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 300; color: rgba(201,168,76,0.2); min-width: 56px; line-height: 1; flex-shrink: 0; }
+  .servico-num { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 300; color: rgba(201,168,76,0.4); min-width: 56px; line-height: 1; flex-shrink: 0; }
   .servico-content { flex: 1; }
   .servico-content h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--cream); margin-bottom: 6px; }
   .servico-content p { font-size: 14px; color: rgba(244,240,232,0.75); line-height: 1.7; }
   .servico-highlight { display: inline-block; margin-top: 10px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-light); background: rgba(201,168,76,0.08); padding: 4px 12px; border-radius: 100px; }
-  .servico-icon { margin-left: auto; color: var(--accent); font-size: 20px; opacity: 0.6; flex-shrink: 0; align-self: center; }
+  .servico-icon { margin-left: auto; color: var(--accent); font-size: 20px; opacity: 0.85; flex-shrink: 0; align-self: center; }
 
-  /* PACOTES */
-  .pacotes { background: var(--dark); }
+  /* PACOTES — fundo #111418 */
+  .pacotes { background: #111418; }
   .pacotes-grid { margin-top: 64px; display: flex; flex-direction: column; gap: 2px; }
   .pacote-card { background: var(--dark-mid); display: flex; flex-wrap: wrap; position: relative; overflow: hidden; transition: background 0.3s; }
   .pacote-card:hover { background: #222832; }
-  .pacote-card.destaque { background: #1a2030; border-left: 2px solid var(--accent); }
+  .pacote-card.destaque { background: #1a2030; border-left: 2px solid var(--accent); box-shadow: 0 8px 48px rgba(46,64,87,0.4); }
   .pacote-card.personalizado { background: var(--dark-mid); border: 1px dashed rgba(201,168,76,0.25); }
-  .pacote-tag { position: absolute; top: 20px; right: 20px; background: var(--accent); color: var(--dark); font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; z-index: 1; }
-  .pacote-header { padding: 40px 36px 28px; border-bottom: 1px solid rgba(201,168,76,0.1); flex: 0 0 280px; }
+  .pacote-tag { position: absolute; top: 20px; right: 20px; font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; z-index: 1; background: linear-gradient(135deg, #C9A84C, #E0C070); color: var(--dark); }
+  .pacote-header { padding: 40px 36px 28px; flex: 0 0 280px; }
+  .pacote-card.destaque .pacote-header { border-bottom: 1px solid rgba(201,168,76,0.3); }
+  .pacote-card:not(.destaque):not(.personalizado) .pacote-header { border-bottom: 1px solid rgba(201,168,76,0.1); }
   .pacote-tier { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
   .pacote-name { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--cream); margin-bottom: 16px; }
   .pacote-price { display: flex; align-items: baseline; gap: 6px; }
   .price-from { font-size: 11px; color: var(--muted); margin-bottom: 4px; letter-spacing: 1px; }
   .price-currency { font-size: 14px; color: var(--muted); }
+  .pacote-card.destaque .price-value { font-family: 'Cormorant Garamond', serif; font-size: 64px; font-weight: 300; color: var(--cream); line-height: 1; }
   .price-value { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 300; color: var(--cream); line-height: 1; }
   .price-period { font-size: 13px; color: var(--muted); }
   .pacote-economia { display: inline-flex; align-items: center; gap: 6px; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); color: var(--accent-light); font-size: 12px; padding: 6px 14px; border-radius: 100px; margin-top: 16px; }
@@ -139,8 +152,8 @@
   .pacote-features li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: rgba(244,240,232,0.75); line-height: 1.5; }
   .pacote-features li::before { content: '◆'; color: var(--accent); font-size: 8px; margin-top: 5px; flex-shrink: 0; }
   .pacote-clt { background: rgba(0,0,0,0.3); border-radius: 4px; padding: 16px 20px; margin-bottom: 20px; }
-  .pacote-clt-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
-  .pacote-clt-value { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: rgba(244,240,232,0.4); text-decoration: line-through; }
+  .pacote-clt-label { font-size: 11px; color: rgba(244,240,232,0.85); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .pacote-clt-value { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: var(--accent-light); text-decoration: line-through; }
   .pacote-footer { padding: 0 36px 36px; width: 100%; }
   .btn-proposta { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; border: 1px solid rgba(201,168,76,0.4); color: var(--accent-light); font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; text-decoration: none; transition: all 0.3s; border-radius: 2px; }
   .btn-proposta:hover { background: var(--accent); border-color: var(--accent); color: var(--dark); }
@@ -152,12 +165,13 @@
   .nota-personalizada { max-width: 640px; margin: 48px auto 0; padding: 28px 36px; background: rgba(201,168,76,0.04); border-left: 1px solid var(--accent); font-size: 14px; color: rgba(244,240,232,0.65); line-height: 1.7; text-align: left; }
   .nota-personalizada strong { color: var(--accent-light); font-weight: 500; }
 
-  /* PASSOS */
-  .passos { background: var(--dark-mid); }
+  /* PASSOS — fundo #1C2028 */
+  .passos { background: #1C2028; }
   .passos-list { margin-top: 64px; position: relative; }
-  .passos-list::before { content: ''; position: absolute; left: 28px; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--accent), transparent); }
+  .passos-list::before { content: ''; position: absolute; left: 28px; top: 0; bottom: 10%; width: 1px; background: linear-gradient(to bottom, var(--accent), transparent 90%); }
   .passo-item { display: flex; gap: 40px; padding: 0 0 48px 0; position: relative; }
-  .passo-dot { width: 56px; height: 56px; border-radius: 50%; background: var(--dark); border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--accent); position: relative; z-index: 1; }
+  .passo-dot { width: 56px; height: 56px; border-radius: 50%; background: var(--dark); border: 1px solid rgba(201,168,76,0.7); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--accent); position: relative; z-index: 1; transition: all 0.3s; }
+  .passo-item:last-child .passo-dot { width: 64px; height: 64px; background: var(--azul); border-color: var(--azul-claro); font-size: 24px; box-shadow: 0 0 24px rgba(46,64,87,0.5); }
   .passo-content { padding-top: 12px; flex: 1; }
   .passo-content h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--cream); margin-bottom: 8px; }
   .passo-content p { font-size: 14px; color: rgba(244,240,232,0.75); line-height: 1.7; }
@@ -169,7 +183,7 @@
   .depoimento-texto { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: rgba(244,240,232,0.8); line-height: 1.6; margin-bottom: 16px; }
   .depoimento-autor { font-size: 13px; color: var(--accent); letter-spacing: 1px; }
 
-  /* CTA FINAL */
+  /* CTA FINAL — gradiente invertido (de baixo pra cima) */
   .cta-final { 
     text-align: center; 
     border-top: 1px solid rgba(201,168,76,0.15); 
@@ -191,13 +205,15 @@
   .cta-final h2 em { font-style: italic; color: var(--accent-light); }
   .cta-final p { font-size: 16px; color: var(--muted); margin-bottom: 52px; max-width: 480px; margin-left: auto; margin-right: auto; }
   .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 52px; }
-  .btn-whats { display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: #fff; font-size: 14px; font-weight: 500; padding: 16px 32px; border-radius: 4px; text-decoration: none; transition: all 0.3s; }
+  .btn-whats { display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: #fff; font-size: 14px; font-weight: 500; padding: 20px 44px; border-radius: 4px; text-decoration: none; transition: all 0.3s; }
   .btn-whats:hover { transform: translateY(-2px); box-shadow: 0 16px 32px rgba(37,211,102,0.25); }
-  .btn-insta { display: inline-flex; align-items: center; gap: 10px; background: transparent; border: 1px solid rgba(201,168,76,0.4); color: var(--accent-light); font-size: 14px; font-weight: 500; padding: 16px 32px; border-radius: 4px; text-decoration: none; transition: all 0.3s; }
+  .btn-insta { display: inline-flex; align-items: center; gap: 10px; background: transparent; border: 1px solid rgba(201,168,76,0.4); color: var(--accent-light); font-size: 14px; font-weight: 500; padding: 20px 44px; border-radius: 4px; text-decoration: none; transition: all 0.3s; }
   .btn-insta:hover { background: rgba(201,168,76,0.1); border-color: var(--accent); }
 
-  footer { background: #0a0e14; padding: 48px 24px; text-align: center; border-top: 1px solid rgba(201,168,76,0.08); }
-  footer p { font-size: 13px; color: rgba(122,128,144,0.5); }
+  /* FOOTER */
+  footer { background: #0a0e14; padding: 48px 24px; text-align: center; position: relative; }
+  footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.25), transparent); }
+  footer p { font-size: 13px; color: rgba(122,128,144,0.5); position: relative; z-index: 1; }
   footer strong { color: var(--accent); }
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
@@ -220,7 +236,7 @@
 
 <!-- ====== HERO ====== -->
 <section class="hero">
-  <div class="hero-badge">Assessoria Executiva B2B</div>
+  <div class="hero-badge">Proposta Exclusiva · Assessoria Executiva B2B</div>
   <div class="hero-logo">
     <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="26" cy="26" r="25" stroke="#C9A84C" stroke-width="1"/>
@@ -236,6 +252,10 @@
   <div class="hero-divider"></div>
   <p class="hero-intro">Processos que não existem, decisões no escuro e você no centro de tudo. A MOVARE assume a gestão administrativa e financeira para que você volte a ser empresário — não bombeiro.</p>
   <a href="#dor" class="hero-cta">Entenda como <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><p class="hero-meta-value">17/02/26</p><p class="hero-meta-label">Data</p></div>
+    <div class="hero-meta-item"><p class="hero-meta-value">Ágatha Moreira</p><p class="hero-meta-label">Responsável</p></div>
+  </div>
   <div class="hero-scroll"><div class="scroll-line"></div><span>Rolar</span></div>
 </section>
 
@@ -247,22 +267,10 @@
       <h2 class="section-title">Reconhece <em>esta situação?</em></h2>
     </div>
     <div class="dor-grid reveal">
-      <div class="dor-card">
-        <div class="dor-card-icon">📱</div>
-        <p>"Passo horas respondendo WhatsApp. Orçamentos atrasam, clientes somem e eu não tenho tempo para o que realmente importa."</p>
-      </div>
-      <div class="dor-card">
-        <div class="dor-card-icon">💸</div>
-        <p>"Tenho dinheiro a receber mas não sei cobrar. Fico com vergonha e o fluxo de caixa sofre no fim do mês."</p>
-      </div>
-      <div class="dor-card">
-        <div class="dor-card-icon">📄</div>
-        <p>"Emissão de nota fiscal, boleto, recibo — tudo para mim. Se eu não fizer, não acontece. E sempre tem algo vencendo."</p>
-      </div>
-      <div class="dor-card">
-        <div class="dor-card-icon">📊</div>
-        <p>"Não sei para onde foi o dinheiro. No fim do mês, olho o saldo e me pergunto: cadê o lucro?"</p>
-      </div>
+      <div class="dor-card"><div class="dor-card-icon">📱</div><p>"Passo horas respondendo WhatsApp. Orçamentos atrasam, clientes somem e eu não tenho tempo para o que realmente importa."</p></div>
+      <div class="dor-card"><div class="dor-card-icon">💸</div><p>"Tenho dinheiro a receber mas não sei cobrar. Fico com vergonha e o fluxo de caixa sofre no fim do mês."</p></div>
+      <div class="dor-card"><div class="dor-card-icon">📄</div><p>"Emissão de nota fiscal, boleto, recibo — tudo para mim. Se eu não fizer, não acontece. E sempre tem algo vencendo."</p></div>
+      <div class="dor-card"><div class="dor-card-icon">📊</div><p>"Não sei para onde foi o dinheiro. No fim do mês, olho o saldo e me pergunto: cadê o lucro?"</p></div>
     </div>
   </div>
 </section>
@@ -288,10 +296,10 @@
 <div class="stats">
   <div class="container">
     <div class="stats-grid reveal">
-      <div class="stat-item"><div class="stat-num">+6</div><div class="stat-label">Anos de mercado</div></div>
-      <div class="stat-item"><div class="stat-num">+80</div><div class="stat-label">Clientes atendidos</div></div>
-      <div class="stat-item"><div class="stat-num">98%</div><div class="stat-label">Renovação de contrato</div></div>
-      <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Remoto & Digital</div></div>
+      <div class="stat-item"><div class="stat-num gold">+6</div><div class="stat-label">Anos de mercado</div></div>
+      <div class="stat-item"><div class="stat-num gold">+80</div><div class="stat-label">Clientes atendidos</div></div>
+      <div class="stat-item"><div class="stat-num light">3</div><div class="stat-label">Continentes</div></div>
+      <div class="stat-item"><div class="stat-num light">100%</div><div class="stat-label">Remoto & Digital</div></div>
     </div>
   </div>
 </div>
@@ -304,50 +312,27 @@
 
       <div class="servico-item">
         <div class="servico-num">01</div>
-        <div class="servico-content">
-          <h3>Gestão de Atendimento no WhatsApp</h3>
-          <p>Triagem de mensagens, resposta a dúvidas frequentes e envio de orçamentos e links de pagamento. Seu cliente é atendido com agilidade — você só entra na conversa quando for realmente necessário.</p>
-          <span class="servico-highlight">Inclui envio de orçamentos fechados</span>
-        </div>
+        <div class="servico-content"><h3>Gestão de Atendimento no WhatsApp</h3><p>Triagem de mensagens, resposta a dúvidas frequentes e envio de orçamentos e links de pagamento. Seu cliente é atendido com agilidade — você só entra na conversa quando for realmente necessário.</p><span class="servico-highlight">Inclui envio de orçamentos fechados</span></div>
         <div class="servico-icon">◆</div>
       </div>
-
       <div class="servico-item">
         <div class="servico-num">02</div>
-        <div class="servico-content">
-          <h3>Gestão Completa de Agenda</h3>
-          <p>Marcação, reagendamento e encaixes com critérios definidos por você. Confirmamos presença 24h antes de cada compromisso para zerar faltas e imprevistos.</p>
-          <span class="servico-highlight">Confirmação 24h antes</span>
-        </div>
+        <div class="servico-content"><h3>Gestão Completa de Agenda</h3><p>Marcação, reagendamento e encaixes com critérios definidos por você. Confirmamos presença 24h antes de cada compromisso para zerar faltas e imprevistos.</p><span class="servico-highlight">Confirmação 24h antes</span></div>
         <div class="servico-icon">◆</div>
       </div>
-
       <div class="servico-item">
         <div class="servico-num">03</div>
-        <div class="servico-content">
-          <h3>Emissão de Notas Fiscais e Recibos</h3>
-          <p>Emitimos NF, recibos e comprovantes conforme sua operação exige. Tudo dentro do prazo e organizado para seu contador.</p>
-        </div>
+        <div class="servico-content"><h3>Emissão de Notas Fiscais e Recibos</h3><p>Emitimos NF, recibos e comprovantes conforme sua operação exige. Tudo dentro do prazo e organizado para seu contador.</p></div>
         <div class="servico-icon">◆</div>
       </div>
-
       <div class="servico-item">
         <div class="servico-num">04</div>
-        <div class="servico-content">
-          <h3>Cobrança Diplomática e Controle de Recebimentos</h3>
-          <p>Fazemos follow-up de inadimplentes com tom profissional e respeitoso — preservando seu relacionamento comercial. Controle de Pix, cartão e boletos em planilha atualizada.</p>
-          <span class="servico-highlight">Cobrança sem desgaste</span>
-        </div>
+        <div class="servico-content"><h3>Cobrança Diplomática e Controle de Recebimentos</h3><p>Fazemos follow-up de inadimplentes com tom profissional e respeitoso — preservando seu relacionamento comercial. Controle de Pix, cartão e boletos em planilha atualizada.</p><span class="servico-highlight">Cobrança sem desgaste</span></div>
         <div class="servico-icon">◆</div>
       </div>
-
       <div class="servico-item">
         <div class="servico-num">05</div>
-        <div class="servico-content">
-          <h3>BPO Financeiro Básico</h3>
-          <p>Contas a pagar e a receber organizadas. Agendamento de boletos e impostos no banco — você só aprova. Relatório de fluxo de caixa entregue no fim do mês para decisões com clareza.</p>
-          <span class="servico-highlight">Relatório mensal incluso</span>
-        </div>
+        <div class="servico-content"><h3>BPO Financeiro Básico</h3><p>Contas a pagar e a receber organizadas. Agendamento de boletos e impostos no banco — você só aprova. Relatório de fluxo de caixa entregue no fim do mês para decisões com clareza.</p><span class="servico-highlight">Relatório mensal incluso</span></div>
         <div class="servico-icon">◆</div>
       </div>
 
@@ -473,14 +458,8 @@
       <h2 class="section-title">Depoimentos <em>de clientes</em></h2>
     </div>
     <div class="depoimentos-grid reveal">
-      <div class="depoimento-card">
-        <p class="depoimento-texto">"Parei de perder cliente por falta de resposta. A MOVARE assumiu o WhatsApp com triagem e orçamentos — meu celular finalmente parou de apitar 24h."</p>
-        <p class="depoimento-autor">— Empresário, setor de serviços B2B</p>
-      </div>
-      <div class="depoimento-card">
-        <p class="depoimento-texto">"O financeiro era um caos. Agora sei exatamente quanto entra, quanto sai e quanto sobra. A cobrança diplomática salvou meu fluxo de caixa."</p>
-        <p class="depoimento-autor">— Diretor comercial, indústria</p>
-      </div>
+      <div class="depoimento-card"><p class="depoimento-texto">"Parei de perder cliente por falta de resposta. A MOVARE assumiu o WhatsApp com triagem e orçamentos — meu celular finalmente parou de apitar 24h."</p><p class="depoimento-autor">— Empresário, setor de serviços B2B</p></div>
+      <div class="depoimento-card"><p class="depoimento-texto">"O financeiro era um caos. Agora sei exatamente quanto entra, quanto sai e quanto sobra. A cobrança diplomática salvou meu fluxo de caixa."</p><p class="depoimento-autor">— Diretor comercial, indústria</p></div>
     </div>
   </div>
 </section>
