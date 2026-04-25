@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MOVARE — Assessoria Executiva</title>
+<title>MOVARE — Assessoria Executiva B2B</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,7 +35,6 @@
     pointer-events: none;
     z-index: 0;
   }
-
   .hero > * { position: relative; z-index: 1; }
   .hero-badge {
     display: inline-block; border: 1px solid rgba(201,168,76,0.5);
@@ -53,9 +52,10 @@
   }
   .hero h1 em { font-style: italic; color: var(--accent-light); }
   .hero-sub {
-    font-family: 'Cormorant Garamond', serif; font-size: clamp(16px,3vw,22px);
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(18px,3vw,26px);
     font-weight: 300; font-style: italic; color: rgba(201,168,76,0.85);
-    margin-bottom: 48px; animation: fadeUp 0.8s 0.3s ease both;
+    max-width: 640px; margin: 0 auto 16px; line-height: 1.4;
+    animation: fadeUp 0.8s 0.3s ease both;
   }
   .hero-divider { width: 60px; height: 1px; background: linear-gradient(to right,transparent,var(--accent),transparent); margin: 0 auto 48px; animation: fadeUp 0.8s 0.35s ease both; }
   .hero-intro { max-width: 560px; font-size: 16px; line-height: 1.8; color: rgba(244,240,232,0.7); margin-bottom: 52px; animation: fadeUp 0.8s 0.4s ease both; }
@@ -79,6 +79,14 @@
   .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px,5vw,52px); font-weight: 300; line-height: 1.15; color: var(--cream); margin-bottom: 20px; }
   .section-title em { font-style: italic; color: var(--accent-light); }
   .section-body { font-size: 16px; line-height: 1.85; color: rgba(244,240,232,0.65); max-width: 620px; }
+
+  /* ESPELHO DA DOR */
+  .dor { background: var(--dark-mid); }
+  .dor-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 56px; }
+  .dor-card { background: var(--dark); padding: 36px; transition: background 0.3s; }
+  .dor-card:hover { background: #161c24; }
+  .dor-card-icon { font-size: 24px; margin-bottom: 12px; }
+  .dor-card p { font-size: 14px; color: rgba(244,240,232,0.7); line-height: 1.7; font-style: italic; }
 
   /* SOBRE */
   .sobre { background: var(--dark); }
@@ -122,8 +130,9 @@
   .price-currency { font-size: 14px; color: var(--muted); }
   .price-value { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: var(--cream); line-height: 1; }
   .price-period { font-size: 13px; color: var(--muted); }
-  
-  /* Estilo da Economia (igual à 1ª foto) */
+  .price-from { font-size: 11px; color: var(--muted); margin-bottom: 4px; letter-spacing: 1px; }
+
+  /* Estilo da Economia */
   .pacote-economia {
     display: inline-flex;
     align-items: center;
@@ -170,6 +179,20 @@
   .btn-proposta:hover { background: var(--accent); border-color: var(--accent); color: var(--dark); }
   .pacote-card.destaque .btn-proposta { background: linear-gradient(135deg, var(--accent), #9A7D32); border-color: transparent; color: var(--dark); font-weight: 500; }
 
+  /* NOTA PERSONALIZADA */
+  .nota-personalizada {
+    max-width: 640px;
+    margin: 48px auto 0;
+    padding: 28px 36px;
+    background: rgba(201,168,76,0.04);
+    border-left: 1px solid var(--accent);
+    font-size: 14px;
+    color: rgba(244,240,232,0.65);
+    line-height: 1.7;
+    text-align: left;
+  }
+  .nota-personalizada strong { color: var(--accent-light); font-weight: 500; }
+
   /* PASSOS */
   .passos { background: var(--dark-mid); }
   .passos-list { margin-top: 64px; position: relative; }
@@ -179,6 +202,13 @@
   .passo-content { padding-top: 12px; flex: 1; }
   .passo-content h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--cream); margin-bottom: 8px; }
   .passo-content p { font-size: 14px; color: rgba(244,240,232,0.75); line-height: 1.7; }
+
+  /* PROVA SOCIAL - depoimentos */
+  .prova-social { background: var(--dark); border-top: 1px solid rgba(201,168,76,0.08); }
+  .depoimentos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 56px; }
+  .depoimento-card { background: var(--dark-mid); padding: 36px; }
+  .depoimento-texto { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: rgba(244,240,232,0.8); line-height: 1.6; margin-bottom: 16px; }
+  .depoimento-autor { font-size: 13px; color: var(--accent); letter-spacing: 1px; }
 
   /* CTA FINAL */
   .cta-final { 
@@ -197,7 +227,6 @@
     pointer-events: none;
     z-index: 0;
   }
-
   .cta-final > * { position: relative; z-index: 1; }
   .cta-final h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px,6vw,72px); font-weight: 300; color: var(--cream); margin-bottom: 20px; line-height: 1.1; }
   .cta-final h2 em { font-style: italic; color: var(--accent-light); }
@@ -216,13 +245,14 @@
   @keyframes scrollAnim { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
-  @media (max-width: 768px) { .sobre-grid, .pacotes-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2,1fr); } .passos-list::before { display: none; } }
+  @media (max-width: 768px) { .sobre-grid, .pacotes-grid, .dor-grid, .depoimentos-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2,1fr); } .passos-list::before { display: none; } }
 </style>
 </head>
 <body>
 
+<!-- ====== HERO ====== -->
 <section class="hero">
-  <div class="hero-badge">Proposta Exclusiva · Assessoria Executiva B2B</div>
+  <div class="hero-badge">Assessoria Executiva B2B</div>
   <div class="hero-logo">
     <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="26" cy="26" r="25" stroke="#C9A84C" stroke-width="1"/>
@@ -234,19 +264,48 @@
     </svg>
   </div>
   <h1>MOVARE<br><em>Assessoria Executiva</em></h1>
-  <p class="hero-sub">Gestão estratégica para empresários que precisam crescer</p>
+  <p class="hero-sub">Seu negócio cresceu.<br>A operação, não.</p>
   <div class="hero-divider"></div>
-  <p class="hero-intro">Preparamos esta proposta exclusiva para mostrar como a MOVARE pode estruturar, organizar e escalar a gestão administrativa do seu negócio — com metodologia, tecnologia e dedicação total.</p>
-  <a href="#pacotes" class="hero-cta">Ver Pacotes <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+  <p class="hero-intro">Processos que não existem, decisões no escuro e você no centro de tudo. A MOVARE assume a gestão administrativa para que você volte a ser empresário — não bombeiro.</p>
+  <a href="#dor" class="hero-cta">Entenda como <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
   <div class="hero-scroll"><div class="scroll-line"></div><span>Rolar</span></div>
 </section>
 
+<!-- ====== ESPELHO DA DOR ====== -->
+<section class="dor" id="dor">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Isso está acontecendo na sua empresa?</p>
+      <h2 class="section-title">Reconhece <em>esta situação?</em></h2>
+    </div>
+    <div class="dor-grid reveal">
+      <div class="dor-card">
+        <div class="dor-card-icon">🔗</div>
+        <p>"Tudo para em mim. Se eu não responder, o negócio não anda. Sou o maior gargalo da minha própria empresa."</p>
+      </div>
+      <div class="dor-card">
+        <div class="dor-card-icon">📉</div>
+        <p>"Tomo decisões importantes com base em feeling. Sei que estou perdendo dinheiro, mas não tenho relatórios claros para entender onde."</p>
+      </div>
+      <div class="dor-card">
+        <div class="dor-card-icon">📄</div>
+        <p>"Contratos se perdem no e-mail. Não sei quais vencem amanhã. Já assinei coisa errada por falta de histórico organizado."</p>
+      </div>
+      <div class="dor-card">
+        <div class="dor-card-icon">⏳</div>
+        <p>"Sei que preciso de um CRM/ERP estruturado, mas não tenho tempo nem equipe interna para implantar e treinar o time."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SOBRE ====== -->
 <section class="sobre">
   <div class="container">
     <div class="reveal">
-      <p class="section-label">O que entregamos</p>
+      <p class="section-label">Quem resolve isso</p>
       <h2 class="section-title">Assessoria que <em>move resultados</em></h2>
-      <p class="section-body">A MOVARE atua desde 2020 com suporte administrativo, financeiro e operacional para empresas que precisam de mais do que uma assistente — precisam de uma parceira estratégica.</p>
+      <p class="section-body">A MOVARE atua desde 2020 com suporte administrativo, financeiro e operacional para empresas que precisam de mais do que uma assistente — precisam de uma parceira estratégica que entrega estrutura, não só tarefa.</p>
     </div>
     <div class="sobre-grid reveal">
       <div class="sobre-card"><div class="sobre-card-icon">📋</div><h3>Gestão de Processos</h3><p>Mapeamos, documentamos e implantamos processos internos que eliminam gargalos e criam previsibilidade para a sua operação crescer sem depender de você.</p></div>
@@ -257,17 +316,19 @@
   </div>
 </section>
 
+<!-- ====== STATS ====== -->
 <div class="stats">
   <div class="container">
     <div class="stats-grid reveal">
       <div class="stat-item"><div class="stat-num">+6</div><div class="stat-label">Anos de mercado</div></div>
       <div class="stat-item"><div class="stat-num">+80</div><div class="stat-label">Clientes atendidos</div></div>
-      <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Continentes</div></div>
+      <div class="stat-item"><div class="stat-num">98%</div><div class="stat-label">Renovação de contrato</div></div>
       <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Remoto & Digital</div></div>
     </div>
   </div>
 </div>
 
+<!-- ====== SERVIÇOS ====== -->
 <section class="servicos">
   <div class="container">
     <div class="reveal"><p class="section-label">O que está incluso</p><h2 class="section-title">Serviços de <em>Assessoria Executiva</em></h2></div>
@@ -281,9 +342,14 @@
   </div>
 </section>
 
+<!-- ====== PACOTES ====== -->
 <section class="pacotes" id="pacotes">
   <div class="container">
-    <div class="reveal"><p class="section-label">Investimento</p><h2 class="section-title">Escolha o pacote <em>ideal para você</em></h2><p class="section-body">Todos os pacotes incluem 2 profissionais dedicados, equipe certificada LGPD, emissão de NF e economia real comparada à contratação CLT.</p></div>
+    <div class="reveal">
+      <p class="section-label">Investimento</p>
+      <h2 class="section-title">Pacotes que <em>cabem no seu momento</em></h2>
+      <p class="section-body">Abaixo estão nossos pacotes básicos. Cada negócio tem necessidades únicas — entre em contato para receber uma proposta personalizada, ajustada ao seu cenário real.</p>
+    </div>
     <div class="pacotes-grid reveal">
       
       <!-- PACOTE ESSENCIAL -->
@@ -291,9 +357,10 @@
         <div class="pacote-header">
           <p class="pacote-tier">🥉 Pacote</p>
           <h3 class="pacote-name">Essencial</h3>
+          <p class="price-from">A partir de</p>
           <div class="pacote-price"><span class="price-currency">R$</span><span class="price-value">1.200</span><span class="price-period">/mês</span></div>
           <div class="pacote-economia">
-            💰 Economia de R$1.824,93/mês
+            💰 Economia de R$1.824,93/mês vs. CLT
           </div>
         </div>
         <div class="pacote-body">
@@ -320,9 +387,10 @@
         <div class="pacote-header">
           <p class="pacote-tier">🥇 Pacote</p>
           <h3 class="pacote-name">Estratégico</h3>
+          <p class="price-from">A partir de</p>
           <div class="pacote-price"><span class="price-currency">R$</span><span class="price-value">2.200</span><span class="price-period">/mês</span></div>
           <div class="pacote-economia">
-            💰 Economia de R$3.146,43/mês
+            💰 Economia de R$3.146,43/mês vs. CLT
           </div>
         </div>
         <div class="pacote-body">
@@ -343,9 +411,13 @@
         <div class="pacote-footer"><a href="https://wa.me/5571983136600" class="btn-proposta">Quero este pacote</a></div>
       </div>
     </div>
+    <div class="nota-personalizada reveal">
+      <strong>Proposta personalizada?</strong> Os valores acima refletem nossos pacotes base. Se o seu negócio exige um escopo diferente — mais horas, demandas específicas ou integração com sistemas legados — fale com a gente pelo WhatsApp. Em até 24h você recebe uma proposta ajustada, sem compromisso.
+    </div>
   </div>
 </section>
 
+<!-- ====== PASSOS ====== -->
 <section class="passos">
   <div class="container">
     <div class="reveal"><p class="section-label">Como começamos</p><h2 class="section-title">Próximos passos <em>após aprovação</em></h2></div>
@@ -360,10 +432,31 @@
   </div>
 </section>
 
+<!-- ====== PROVA SOCIAL ====== -->
+<section class="prova-social">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Quem já transformou a operação</p>
+      <h2 class="section-title">Depoimentos <em>de clientes</em></h2>
+    </div>
+    <div class="depoimentos-grid reveal">
+      <div class="depoimento-card">
+        <p class="depoimento-texto">"Com a MOVARE, consegui finalmente mapear os processos do meu negócio. Hoje sei exatamente quem faz o quê — e não dependo mais de mim para cada decisão operacional."</p>
+        <p class="depoimento-autor">— Empresário, setor de serviços B2B</p>
+      </div>
+      <div class="depoimento-card">
+        <p class="depoimento-texto">"A implantação do CRM foi o divisor de águas. Em dois meses, o time de vendas já operava com o sistema e eu tinha relatórios que nunca tive antes."</p>
+        <p class="depoimento-autor">— Diretor comercial, indústria</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CTA FINAL ====== -->
 <section class="cta-final">
   <div class="container reveal">
     <h2>Vamos estruturar<br><em>o seu negócio?</em></h2>
-    <p>Escolha seu pacote e comece a transformar a gestão da sua empresa ainda esta semana.</p>
+    <p>Escolha um pacote base ou peça uma proposta personalizada — a transformação da sua gestão começa ainda esta semana.</p>
     <div class="cta-buttons">
       <a href="https://wa.me/5571983136600" class="btn-whats">
         <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
